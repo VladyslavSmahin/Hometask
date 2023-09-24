@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*  function input() {
+          let name = prompt(`Введіть ваше ім'я`);
+          let newString = name.charAt(0).toUpperCase();
+          let newString2 = name.slice(1);
+          alert(`${newString}${newString2}`);
+      }
+
+      input();*/
+
+    /* function calc() {
+         let num1 = Number(prompt(`Введіть число 1`));
+         let num2 = Number(prompt(`Введіть число 2`));
+         let sum = num1 + num2;
+         let dif = num1 - num2;
+         let product = num1 * num2;
+         let quo = num1 / num2;
+         alert(`
+             sum: ${sum}
+         dif: ${dif}
+         product: ${product}
+         quo: ${quo}
+         `)
+     }
+     calc();*/
+
+    //______________________________________//
+
+    function splitString(stringToSplit, separator) {
+        var arrayOfStrings = stringToSplit.split(separator);
+
+        console.log('Оригинальная строка: "' + stringToSplit + '"');
+        console.log('Разделитель: "' + separator + '"');
+        console.log(
+            "Массив содержит " +
+            arrayOfStrings.length +
+            " элементов: " +
+            arrayOfStrings.join(" / "),
+        );
+    }
+
+    // Строчка из «Бури» Шекспира. Перевод Михаила Донского.
+    var tempestString = "И как хорош тот новый мир, где есть такие люди!";
+    var monthString = "Янв,Фев,Мар,Апр,Май,Июн,Июл,Авг,Сен,Окт,Ноя,Дек";
+
+    var space = " ";
+    var comma = ",";
+
+    splitString(tempestString, space);
+    splitString(tempestString);
+    splitString(monthString, comma);
+    console.log(typeof arrayOfStrings);
+</script>
+</body>
+</html>

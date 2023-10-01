@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let numOrStr = prompt('input number or string');
+    console.log(numOrStr);
+
+   switch (true) {
+        case (numOrStr === null) : {
+            alert('ви скасували');
+            break;
+        }
+        case (numOrStr.trim() === '') : {
+            alert('Empty String');
+            break;
+        }
+        case (isNaN( +numOrStr )) : {
+            alert(' number is Ba_NaN');
+            break;
+        }
+        default:
+            alert('OK!');
+    }
+
+</script>
+</body>
+</html>

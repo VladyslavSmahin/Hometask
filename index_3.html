@@ -10,8 +10,8 @@
 <body>
 <script>
     //_____Таск1_____________________________//
-      let name = prompt("Введіть ім'я", "Ваше ім'я");
-      alert(`Hello, ${name}!How are you?`)
+     /* let name = prompt("Введіть ім'я", "Ваше ім'я");
+      alert(`Hello, ${name}!How are you?`)*/
     //_____Таск2______варіант 1______________//
     let num = prompt(`Введіть число`);
     let a = num.charAt(0);
@@ -19,7 +19,7 @@
     let c = num.charAt(2);
     let message1 = (a === b && b === c) ? ("Однакові") : ("Різні");
     alert(message1);
-    let message2 = (a === b || b === c) ? ("Так,є") : ("Немає");
+    let message2 = (a === b || b === c || a === c) ? ("Так,є") : ("Немає");
     alert(message2);
     //_____Таск2______варіант 2______________//
     let num1 = prompt(`Введіть число`);
@@ -28,10 +28,10 @@
     let f = num1 % 10;
     let message_1 = (d === e && e === f) ? ("Однакові") : ("Різні");
     alert(message_1);
-    let message_2 = (d === e || e === f) ? ("Так,є") : ("Немає");
+    let message_2 = (d === e || e === f || a === c) ? ("Так,є") : ("Немає");
     alert(message_2);
     //_____Таск3_____________________________//
-    let year = prompt(`Рік вашого народження?`);
+    /*let year = prompt(`Рік вашого народження?`);
     let yearNow = 2023;
 
     function year2() {
@@ -72,7 +72,7 @@
 
     alert(year2())
     alert(capital())
-    alert(sport2())
+    alert(sport2())*/
 </script>
 </body>
 </html>

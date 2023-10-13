@@ -10,19 +10,20 @@
 <body>
 <script>
     //TASK1//
-    /*let array = [1, 2, 3, 4, 5]
+    let array = [1, 2, 3, 4, 5]
     function removeElement(array, item) {
       let index = array.indexOf(item);
       console.log(index)
       if (index !== -1) {
         array.splice(index, 1);
       }
+      return array
     }
-    removeElement(array,3)
-    console.log(array)*/
+    removeElement(array,5)
+    console.log(array)
     //TASK2//
 
-    /* let arr = [2, 2, 'three', 4, 'five', 2, 4, 4];
+     let arr = [2, 2, 'three', 4, 'five', 2, 4, 4];
      let x = 1;
      let res = arr.reduce(function (sum, elem) {
          if (elem < 0 || elem > 0) {
@@ -32,7 +33,6 @@
              return sum;
          }
      });
-     console.log(x)
      console.log(res);
      const average = res / x;
      console.log(`Середнє арифметичне чисел в масиві: ${average}`)
@@ -40,22 +40,23 @@
      let arr2 = arr.filter(function (element) {
          return (element > 0 || element <= 0);
      });
-     console.log(arr2);*/
+     console.log(arr2);
     //TASK3//
-    let inputString = "hello world";
-    let charactersToRemove = prompt('Введіть символи');
-    let result = removeCharacters(inputString, charactersToRemove);
-
+    const inputString = "hello world";
+    const charactersToRemove = ['l', 'd'];
     function removeCharacters(inputString, charactersToRemove) {
-        let index = inputString.indexOf(charactersToRemove);
-        console.log(index)
-        if (index !== -1) {
-            inputString.splice(index, 1);
-        }
-        return inputString;
+        const res = inputString.split(``).filter(function (bla) {
+                return (!charactersToRemove.join(``).includes(bla))
+            }
+        )
+        const resStr = res.join(``)
+        console.log(charactersToRemove)
+        console.log(res)
+        return resStr
     }
-
+    let result = removeCharacters(inputString, charactersToRemove);
     console.log(result)
+
 </script>
 </body>
 </html>

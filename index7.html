@@ -40,8 +40,11 @@
         for (let count = 0; count < 10; count++) {
             if (count === 0) {
                 num = +prompt(`Введите число`, '1-100');
-            } else if (num < 100) {
+            } else if (num <= 100) {
                 num2 = +prompt(`Введите еще раз, пожалуйста`, '1-100');
+             if (num2 > 100) {
+                    return alert(num2);
+                }
             }
             else if (num > 100) {
                 return alert(num);

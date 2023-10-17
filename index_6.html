@@ -13,17 +13,26 @@
     let array = [1, 2, 3, 4, 5]
     function removeElement(array, item) {
       let index = array.indexOf(item);
-      console.log(index)
       if (index !== -1) {
         array.splice(index, 1);
       }
-      return array
     }
     removeElement(array,5)
     console.log(array)
     //TASK2//
-
-     let arr = [2, 2, 'three', 4, 'five', 2, 4, 4];
+    let myArray = [2, 2, 'three', 4, 'five', 2, 4, 4];
+    function calculateAverage(myArray){
+    let arr2 = myArray.filter(function (element) {
+        return (element > 0 || element <= 0);
+    });
+    let res = arr2.reduce(function (sum, elem,){
+         return sum+elem
+    })
+        return  res/arr2.length
+} const average = calculateAverage(myArray)
+console.log(`Середнє арифметичне чисел в масиві: ${average}`);
+//var2
+    /* let myArray = [2, 2, 'three', 4, 'five', 2, 4, 4];
      let x = 1;
      let res = arr.reduce(function (sum, elem) {
          if (elem < 0 || elem > 0) {
@@ -33,14 +42,8 @@
              return sum;
          }
      });
-     console.log(res);
-     const average = res / x;
-     console.log(`Середнє арифметичне чисел в масиві: ${average}`)
-     //Var2//
-     let arr2 = arr.filter(function (element) {
-         return (element > 0 || element <= 0);
-     });
-     console.log(arr2);
+    */
+
     //TASK3//
     const inputString = "hello world";
     const charactersToRemove = ['l', 'd'];
@@ -49,10 +52,7 @@
                 return (!charactersToRemove.join(``).includes(bla))
             }
         )
-        const resStr = res.join(``)
-        console.log(charactersToRemove)
-        console.log(res)
-        return resStr
+        return res.join(``)
     }
     let result = removeCharacters(inputString, charactersToRemove);
     console.log(result)

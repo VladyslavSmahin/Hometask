@@ -9,43 +9,45 @@
 </head>
 <body>
 <script>
-      let ladder = {
-          step: 0,
-          up: function () {
-              this.step++
-              return this
-          },
+     let ladder = {
+         step: 0,
+         up: function () {
+             this.step++
+             return this
+         },
 
-          down: function () {
+         down: function () {
 
-              this.step--
-              return this
-          },
-          showStep: function () {
-              console.log(this.step)
-              return this
-          }
-      }
-      let res = ladder.up().up().up().showStep().step
-      console.log(res)
+             this.step--
+             return this
+         },
+         showStep: function () {
+             console.log(this.step)
+             return this
+         }
+     }
+     let res = ladder.up().up().up().down().showStep().step
+     console.log(res)
     //var2
-    function ladder2()  {
+   /* function ladder2() {
         let step = 0
         return {
-            up:  () => ++step,
+            up: () => ++step,
             down: () => --step,
-            showStep: () => console.log(step)
+            showStep: () => step
         }
     }
+
     let myLadder = ladder2()
     let stepPlus = myLadder.up
     let stepMinus = myLadder.down
     let show = myLadder.showStep
     console.log(stepPlus())
     console.log(stepPlus())
+    console.log(stepPlus())
     console.log(stepMinus())
-    show()
-
+    console.log(`show`,show())
+*/
 </script>
 </body>
 </html>

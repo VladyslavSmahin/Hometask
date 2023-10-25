@@ -10,20 +10,30 @@
 <body>
 <script>
     //task1
-    function Person(a = prompt(`Введіть ім'я`, `Ім'я`), b = +prompt(`Введіть вік`,`Вік`)){
-        this.name = a;
-        this.age = b;
+    function Person(name = prompt(`Введіть ім'я`, `Ім'я`), age = +prompt(`Введіть вік`,`Вік`)){
+        this.name = name;
+        this.age = age;
     }
-    const user1 = new Person()
-   /* console.log(user1.name(), user1.age())*/
-    function Car(make = prompt(`Введіть марку`, ''), model = prompt(`Введіть модель`, ''), year = prompt(`Введіть рік`, '')){
+    const user = new Person()
+    const user2 = new Person()
+    const user3 = new Person()
+    console.log(user.name, user.age)
+    console.log(user2.name, user2.age)
+    console.log(user3.name, user3.age)
+    function Car(owner, make = prompt(`Введіть марку`, ''), model = prompt(`Введіть модель`, ''), year = prompt(`Введіть рік`, '')){
         this.make = make;
         this.model = model;
         this.year = year;
-        this.owner = () => user1.name + ' ' + user1.age;
+        this.owner = owner.name + ' ' + owner.age;
     }
-    const userCar = new Car()
-    console.log(userCar.make, userCar.model, userCar.year,'власник - ', userCar.owner())
+    const userCar = new Car(user)
+    const userCar2 = new Car(user2)
+    const userCar3 = new Car(user3)
+
+    console.log(userCar.make, userCar.model, userCar.year, 'власник - ', userCar.owner)
+    console.log(userCar2.make, userCar2.model, userCar2.year, 'власник - ', userCar2.owner)
+    console.log(userCar3.make, userCar3.model, userCar3.year, 'власник - ', userCar3.owner)
+
 </script>
 </body>
 </html>

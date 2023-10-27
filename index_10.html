@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button id="baton" style="color: green">1</button>
+<img src="#" id="myImage" alt="img">
+<script>
+    let button = document.getElementById(`baton`)
+    button.addEventListener('click', function () {
+        if (this.style.color === `green`) {
+            this.style.color = `red`;
+        } else {
+            this.style.color = `green`
+        }
+    });
+
+    //task2
+    function createTable() {
+        let table = document.createElement('table');
+
+        for (let i = 1; i <= 10; i++) {
+            let row = document.createElement('tr');
+
+            for (let j = 1; j <= 10; j++) {
+                let cell = document.createElement('td');
+                cell.textContent = (i * j).toString();
+                row.appendChild(cell);
+            }
+
+            table.appendChild(row);
+        }
+
+        document.body.appendChild(table);
+    }
+
+    createTable();
+    //task3
+    let imageElement = document.getElementById('myImage');
+    let way = Math.floor(Math.random() * 10) + 1;
+
+    imageElement.src = `images_10/image${way}.jpg`
+
+</script>
+</body>
+</html>

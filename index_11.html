@@ -19,11 +19,15 @@
         <button id="removeButton">Видалити</button>
     </li>
 </ul>
-<label for="input">Новая тасочка</label>
+<!--<label for="input">Новая тасочка</label>
 <input type="text" id="input" name="input">
-<button id="addButton">Додати</button>
+<button id="addButton">Додати</button>-->
+<form action="#" method="get" id="form">
+    <input type="text" id="input" name="input">
+    <button id="addButton" type="submit">Додати</button>
+</form>
 <script>
-    /*  document.getElementById(`parent`).addEventListener(`click`, (event) => {
+      document.getElementById(`parent`).addEventListener(`click`, (event) => {
           alert(event.target.textContent)
       })
       let link
@@ -38,24 +42,27 @@
                   window.location.href = link;
               }
           })
-      })*/
+      })
     //task3
 
-    document.getElementById(`addButton`).addEventListener(`click`, function () {
+    document.getElementById(`form`).addEventListener(`submit`, function (e) {
+        e.preventDefault()
         let newTask = document.createElement(`li`)
         let inputValue = document.getElementById(`input`).value
         newTask.textContent = inputValue
         let deleteButton = document.createElement('button');
         deleteButton.textContent = 'Видалити'
         deleteButton.addEventListener(`click`, function () {
-            ul.removeChild(newTask)
+            newTask.remove()
         })
         newTask.appendChild(deleteButton)
         let ul = document.getElementById(`ul`)
         ul.appendChild(newTask)
     })
-    document.getElementById(`removeButton`).addEventListener(`click`, function (){
-        let task = document.getElementById(`li`).style.display = `none`
+    document.getElementById(`ul`).addEventListener(`click`, function (e){
+        if(e.target && e.target.matches(`button`)){
+            e.target.parentElement.remove()
+        }
     })
 </script>
 <!--<button id="button"> Кнопка1</button>

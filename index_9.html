@@ -13,27 +13,29 @@
     function Person(name = prompt(`Введіть ім'я`, `Ім'я`), age = +prompt(`Введіть вік`,`Вік`)){
         this.name = name;
         this.age = age;
+        this.showInfo = () => console.log(`${this.name}, ${this.age}`)
     }
     const user = new Person()
     const user2 = new Person()
     const user3 = new Person()
-    console.log(user.name, user.age)
-    console.log(user2.name, user2.age)
-    console.log(user3.name, user3.age)
+    user.showInfo()
+    user2.showInfo()
+    user3.showInfo()
+
     function Car(owner, make = prompt(`Введіть марку`, ''), model = prompt(`Введіть модель`, ''), year = prompt(`Введіть рік`, '')){
         this.make = make;
         this.model = model;
         this.year = year;
         this.owner = owner.name + ' ' + owner.age;
+        this.showParameters = () => console.log(`Власник: ${this.owner}: ${this.make},${this.model},${this.year}`)
     }
     const userCar = new Car(user)
     const userCar2 = new Car(user2)
     const userCar3 = new Car(user3)
 
-    console.log(userCar.make, userCar.model, userCar.year, 'власник - ', userCar.owner)
-    console.log(userCar2.make, userCar2.model, userCar2.year, 'власник - ', userCar2.owner)
-    console.log(userCar3.make, userCar3.model, userCar3.year, 'власник - ', userCar3.owner)
-
+    userCar.showParameters()
+    userCar2.showParameters()
+    userCar3.showParameters()
 </script>
 </body>
 </html>

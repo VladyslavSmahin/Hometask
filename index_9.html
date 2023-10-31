@@ -26,16 +26,18 @@
         this.make = make;
         this.model = model;
         this.year = year;
-        this.owner = owner.name + ' ' + owner.age;
-        this.showParameters = () => console.log(`Власник: ${this.owner}: ${this.make},${this.model},${this.year}`)
+        this.setOwner = (owner) => this.owner = owner;
+        this.getParameters = () => console.log(`Власник: ${JSON.stringify(this.owner)}: ${this.make},${this.model},${this.year}`)
     }
     const userCar = new Car(user)
     const userCar2 = new Car(user2)
     const userCar3 = new Car(user3)
-
-    userCar.showParameters()
-    userCar2.showParameters()
-    userCar3.showParameters()
+    userCar.setOwner(user)
+    userCar2.setOwner(user2)
+    userCar3.setOwner(user3)
+    userCar.getParameters()
+    userCar2.getParameters()
+    userCar3.getParameters()
 </script>
 </body>
 </html>

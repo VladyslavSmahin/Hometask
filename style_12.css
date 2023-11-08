@@ -50,3 +50,6 @@
     border-radius: 12px;
     width: 100%;
 }
+.error {
+    display: none;
+}

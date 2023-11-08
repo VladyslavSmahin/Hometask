@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //TASK1//
+    let array = [1, 2, 3, 4, 5]
+    function removeElement(array, item) {
+      let index = array.indexOf(item);
+      if (index !== -1) {
+        array.splice(index, 1);
+      }
+    }
+    removeElement(array,5)
+    console.log(array)
+    //TASK2//
+    let myArray = [2, 2, 'three', 4, 'five', 2, 4, 4];
+    function calculateAverage(myArray){
+    let arr2 = myArray.filter(function (element) {
+        return (element > 0 || element <= 0);
+    });
+    let res = arr2.reduce(function (sum, elem,){
+         return sum+elem
+    })
+        return  res/arr2.length
+} const average = calculateAverage(myArray)
+console.log(`Середнє арифметичне чисел в масиві: ${average}`);
+//var2
+    /* let myArray = [2, 2, 'three', 4, 'five', 2, 4, 4];
+     let x = 1;
+     let res = arr.reduce(function (sum, elem) {
+         if (elem < 0 || elem > 0) {
+             x++
+             return sum + elem;
+         } else {
+             return sum;
+         }
+     });
+    */
+
+    //TASK3//
+    const inputString = "hello world";
+    const charactersToRemove = ['l', 'd'];
+    function removeCharacters(inputString, charactersToRemove) {
+        const res = inputString.split(``).filter(function (bla) {
+                return (!charactersToRemove.join(``).includes(bla))
+            }
+        )
+        return res.join(``)
+    }
+    let result = removeCharacters(inputString, charactersToRemove);
+    console.log(result)
+
+</script>
+</body>
+</html>

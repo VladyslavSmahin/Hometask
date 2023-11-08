@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //TASK_1//
+   /* let sum = 0;
+    let num = 0;
+    while (num <= 15) {
+        sum += num;
+        num++;
+
+    }
+    console.log(sum)
+    //TASK_2//
+    //var_1//
+    let product = 1;
+    let num_ = 15;
+    while (num_ >= 15 && num_ <= 35) {
+        product *= num_;
+        num_++;
+
+    }
+    console.log(product)
+    //VAR_2//
+    const factorial = (n) => {
+        if (n === 14) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+    console.log(factorial(35))
+
+    //VAR_3//
+    function fact(number) {
+        let factorial_1 = 1;
+        for (let y = number; y >= 15; y--) {
+            factorial_1 *= y;
+        }
+        return factorial_1
+    }
+
+    console.log(fact(35))
+    //TASK_3//
+    let sum_1 = 0;
+    let num_1 = 1;
+    while (num_1 <= 500) {
+        sum_1 += num_1;
+        num_1++;
+    }
+    console.log(sum_1 / 500)
+
+    //TASK_4//
+    let sum_3 = 0
+    for (let x = 30; x < 80; x++) {
+        if (x % 2 !== 0) {
+            continue;
+        }
+        sum_3 += x
+    }
+    console.log(sum_3)*/
+    //TASK_5//
+    let oneRow = ``;
+
+    function prod() {
+        for (let c = 1; c <= 10; c++) {
+            for (let d = 1; d <= 10; d++) {
+                oneRow += (d * c) + '  ';
+            }
+            console.log(oneRow)
+            oneRow = ``
+        }
+    }
+
+    prod()
+</script>
+</body>
+</html>

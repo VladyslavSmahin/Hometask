@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //_____Таск1_____________________________//
+     /* let name = prompt("Введіть ім'я", "Ваше ім'я");
+      alert(`Hello, ${name}!How are you?`)*/
+    //_____Таск2______варіант 1______________//
+    let num = prompt(`Введіть число`);
+    let a = num.charAt(0);
+    let b = num.charAt(1);
+    let c = num.charAt(2);
+    let message1 = (a === b && b === c) ? ("Однакові") : ("Різні");
+    alert(message1);
+    let message2 = (a === b || b === c || a === c) ? ("Так,є") : ("Немає");
+    alert(message2);
+    //_____Таск2______варіант 2______________//
+    let num1 = prompt(`Введіть число`);
+    let d = Math.floor(num1/100);
+    let e = Math.floor((num1 % 100)/10);
+    let f = num1 % 10;
+    let message_1 = (d === e && e === f) ? ("Однакові") : ("Різні");
+    alert(message_1);
+    let message_2 = (d === e || e === f || a === c) ? ("Так,є") : ("Немає");
+    alert(message_2);
+    //_____Таск3_____________________________//
+    /*let year = prompt(`Рік вашого народження?`);
+    let yearNow = 2023;
+
+    function year2() {
+        if (year === null) {
+            return 'Шкода, що ви не захотіли ввести ваш рік народження';
+        } else {
+            return yearNow - year
+        }
+    }
+
+    let city = prompt(`Місто,в якому ви живете?`);
+
+    function capital() {
+        if (city === "Київ" || city === "київ") {
+            return "Ти живеш у столиці України";
+        } else if
+        (city === "Лондон" || city === "лондон") {
+            return "Ти живеш у столиці Великобританії";
+        } else if
+        (city === "Вашингтон" || city === "вашингтон") {
+            return "Ти живеш у столиці США";
+        } else if (city === null) {
+            return `Шкода, що ви не захотіли ввести своє місто`
+        } else {
+            return city;
+        }
+    }
+
+    let sport = prompt(`Улюблений вид спорту?`);
+
+    function sport2() {
+        if (sport === null) {
+            return 'Шкода, що ви не захотіли ввести ваш улюбленний ви спорту';
+        } else {
+            return sport
+        }
+    }
+
+    alert(year2())
+    alert(capital())
+    alert(sport2())*/
+</script>
+</body>
+</html>

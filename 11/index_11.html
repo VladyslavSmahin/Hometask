@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<div id="parent">
+    <button>Раз</button>
+    <button>Два</button>
+    <button>Три</button>
+</div>
+<ul id="ul">
+    <li id="li">Завдання 1
+        <button id="removeButton">Видалити</button>
+    </li>
+</ul>
+
+<form action="#" method="get" id="form">
+    <input type="text" id="input" name="input">
+    <button id="addButton" type="submit">Додати</button>
+</form>
+<script>
+    document.getElementById(`parent`).addEventListener(`click`, (event) => {
+        alert(event.target.textContent)
+    })
+    let link
+    document.addEventListener('DOMContentLoaded', function () {
+        let but1 = document.getElementById(`button`)
+        but1.addEventListener(`click`, function () {
+            link = prompt(`Введіть посилання`, 'https://...')
+        })
+        //task2
+        document.getElementById("button2").addEventListener("click", function () {
+            if (link) {
+                window.location.href = link;
+            }
+        })
+    })
+    //task3
+
+    document.getElementById(`form`).addEventListener(`submit`, function (e) {
+        e.preventDefault()
+        let newTask = document.createElement(`li`)
+        let inputValue = document.getElementById(`input`).value
+        newTask.textContent = inputValue
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Видалити'
+        deleteButton.addEventListener(`click`, function () {
+            newTask.remove()
+        })
+        newTask.appendChild(deleteButton)
+        let ul = document.getElementById(`ul`)
+        ul.appendChild(newTask)
+    })
+    document.getElementById(`ul`).addEventListener(`click`, function (e) {
+        if (e.target && e.target.matches(`button`)) {
+            e.target.parentElement.remove()
+        }
+    })
+</script>
+<button id="button"> Кнопка1</button>
+<button id="button2"> Кнопка2</button>
+</body>
+</html>

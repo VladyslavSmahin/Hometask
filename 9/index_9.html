@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //task1
+    function Person(name = prompt(`Введіть ім'я`, `Ім'я`), age = +prompt(`Введіть вік`,`Вік`)){
+        this.name = name;
+        this.age = age;
+        this.showInfo = () => console.log(`${this.name}, ${this.age}`)
+    }
+    const user = new Person()
+    const user2 = new Person()
+    const user3 = new Person()
+    user.showInfo()
+    user2.showInfo()
+    user3.showInfo()
+
+    function Car(owner, make = prompt(`Введіть марку`, ''), model = prompt(`Введіть модель`, ''), year = prompt(`Введіть рік`, '')){
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.setOwner = (owner) => this.owner = owner;
+        this.getParameters = () => console.log(`Власник: ${JSON.stringify(this.owner)}: ${this.make},${this.model},${this.year}`)
+    }
+    const userCar = new Car(user)
+    const userCar2 = new Car(user2)
+    const userCar3 = new Car(user3)
+    userCar.setOwner(user)
+    userCar2.setOwner(user2)
+    userCar3.setOwner(user3)
+    userCar.getParameters()
+    userCar2.getParameters()
+    userCar3.getParameters()
+</script>
+</body>
+</html>

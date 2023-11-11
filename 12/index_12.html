@@ -52,8 +52,7 @@
             `Обов'язкове текстове поле`,
             `Текстове поле не меньше 5 символів`,
             `Обов'язкове числове поле з початком на +380`,
-            `Некоректний email`
-        ];
+            `Некоректний email`];
         let formGroups = document.querySelectorAll('.form-group');
 
         formGroups.forEach(function(group, index) {
@@ -89,10 +88,11 @@
             checkInput(/^\+380\d{9}$/, phoneNumberValue, errorElements[2])
             checkInput(/[@.]/, emailValue, errorElements[3])
 
-            let hasErrors = Array.from(errorElements).some(function (errorElement){
+           /* let hasErrors = Array.from(errorElements).some(function (errorElement){
                 return errorElement.style.display !== `none`
             })
-            if (!hasErrors){
+            console.log(hasErrors)
+            if (!hasErrors){*/
                 let formData = new FormData(this);
 
                 formData.forEach(function (value, key) {
@@ -101,7 +101,7 @@
                     console.log('Значение поля:', value);
 
                 });
-            }
+            //}
         })
     })
 </script>

@@ -19,25 +19,21 @@
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name</label>
                 <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Name">
-                <span class="error">Обов'язкове текстове поле</span>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="Message"
                           rows="3"></textarea>
-                <span class="error">Текстове поле не меньше 5 символів</span>
             </div>
             <h6>How to answer you?</h6>
             <div class="form-group">
                 <label for="exampleFormControlInput2">Phone number</label>
                 <input type="tel" name="tel" class="form-control" id="exampleFormControlInput2"
                        placeholder="Phone number">
-                <span class="error">Обов'язкове числове поле з початком на +380</span>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput3">Email address</label>
                 <input type="email" name="email" class="form-control" id="exampleFormControlInput3" placeholder="Email">
-                <span class="error">Некоректний email</span>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput4">Address</label>
@@ -51,88 +47,62 @@
     </div>
 </section>
 <script>
-    /*document.getElementById('myForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        let nameInput = document.getElementById('exampleFormControlInput1');
-        let nameValue = nameInput.value;
-        let regex = /^[a-zA-Zа-яА-Я]+$/;
-        if (regex.test(nameValue)) {
-            alert('Имя валидно!');
-        } else {
-            alert('Имя содержит недопустимые символы!');
-        }
-        let messageInput = document.getElementById(`exampleFormControlTextarea1`)
-        let messageValue = messageInput.value
-        let regex2 = /^.{5,}$/;
-        if (regex2.test(messageValue)) {
-            alert('Message валиден!');
-        } else {
-            alert('Message должен содержать не менее 5 символов!');
-        }
-        let phoneNumberInput = document.getElementById(`exampleFormControlInput2`)
-        let phoneNumberValue = phoneNumberInput.value
-        let regex3 = /^\+380\d{9}$/;
-        if (regex3.test(phoneNumberValue)) {
-            alert('Номер валиден!');
-        } else {
-            alert('Неверный формат номера!');
-        }
-        let emailInput = document.getElementById(`exampleFormControlInput3`)
-        let emailValue = emailInput.value
-        let regex4 = regex = /[@.]/;
+    document.addEventListener('DOMContentLoaded', function () {
+        let errorMessages = [
+            `Обов'язкове текстове поле`,
+            `Текстове поле не меньше 5 символів`,
+            `Обов'язкове числове поле з початком на +380`,
+            `Некоректний email`
+        ];
+        let formGroups = document.querySelectorAll('.form-group');
 
-        if (regex4.test(emailValue)) {
-            alert('Email валиден!');
-        } else {
-            alert('Email невалиден!');
-        }
-        let formData = new FormData(this);
-
-        formData.forEach(function (value, key) {
-            console.log('Имя поля:', key);
-            console.log('Значение поля:', value);
+        formGroups.forEach(function(group, index) {
+            let errorMessage = document.createElement('span');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = errorMessages[index];
+            group.appendChild(errorMessage);
         });
-    });*/
-    ///////////////////////
-    document.getElementById('myForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        let nameInput = document.getElementById('exampleFormControlInput1');
-        let nameValue = nameInput.value;
-
-        let messageInput = document.getElementById(`exampleFormControlTextarea1`)
-        let messageValue = messageInput.value
-
-        let phoneNumberInput = document.getElementById(`exampleFormControlInput2`)
-        let phoneNumberValue = phoneNumberInput.value
-
-        let emailInput = document.getElementById(`exampleFormControlInput3`)
-        let emailValue = emailInput.value
-        let errorElements = document.getElementsByClassName('error')
-        for(let i = 0; i < errorElements.length; i++) {
-            errorElements[i].style.display = 'none';
-        }
-        function checkInput(regex, value, errorElements) {
+        function checkInput(regex, value, errorElement) {
             if (!regex.test(value)) {
-                errorElements.style.display = `block`
+                errorElement.style.display = 'inline-block';
+            } else {
+                errorElement.style.display = 'none';
             }
         }
-        checkInput(/^[a-zA-Zа-яА-Я]+$/, nameValue, errorElements[0])
-        checkInput(/^.{5,}$/, messageValue, errorElements[1])
-        checkInput(/^\+380\d{9}$/,phoneNumberValue, errorElements[2])
-        checkInput(/[@.]/, emailValue, errorElements[3])
-        if (document.getElementsByClassName('error')[0].style.display === 'none' &&
-            document.getElementsByClassName('error')[1].style.display === 'none' &&
-            document.getElementsByClassName('error')[2].style.display === 'none' &&
-            document.getElementsByClassName('error')[3].style.display === 'none') {
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let nameInput = document.getElementById('exampleFormControlInput1');
+            let nameValue = nameInput.value;
 
+            let messageInput = document.getElementById(`exampleFormControlTextarea1`)
+            let messageValue = messageInput.value
 
+            let phoneNumberInput = document.getElementById(`exampleFormControlInput2`)
+            let phoneNumberValue = phoneNumberInput.value
 
-        }let formData = new FormData(this);
+            let emailInput = document.getElementById(`exampleFormControlInput3`)
+            let emailValue = emailInput.value
+            let errorElements = document.querySelectorAll('.error-message');
 
-        formData.forEach(function (value, key) {
-            console.log('Имя поля:', key);
-            console.log('Значение поля:', value);
-        });
+            checkInput(/^[a-zA-Zа-яА-Я]+$/, nameValue, errorElements[0])
+            checkInput(/^.{5,}$/, messageValue, errorElements[1])
+            checkInput(/^\+380\d{9}$/, phoneNumberValue, errorElements[2])
+            checkInput(/[@.]/, emailValue, errorElements[3])
+
+            let hasErrors = Array.from(errorElements).some(function (errorElement){
+                return errorElement.style.display !== `none`
+            })
+            if (!hasErrors){
+                let formData = new FormData(this);
+
+                formData.forEach(function (value, key) {
+
+                    console.log('Имя поля:', key);
+                    console.log('Значение поля:', value);
+
+                });
+            }
+        })
     })
 </script>
 </body>

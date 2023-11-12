@@ -25,7 +25,6 @@ function slider(prevButton, nextButton, listElement) {
     }
     prevButton.addEventListener(`click`, changeElement)
     nextButton.addEventListener(`click`, changeElement)
-
 }
 slider(
     document.querySelector(`.js--slider__prev`),

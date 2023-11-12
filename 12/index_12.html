@@ -55,12 +55,15 @@
             `Некоректний email`];
         let formGroups = document.querySelectorAll('.form-group');
 
-        formGroups.forEach(function(group, index) {
-            let errorMessage = document.createElement('span');
-            errorMessage.className = 'error-message';
-            errorMessage.textContent = errorMessages[index];
-            group.appendChild(errorMessage);
+        formGroups.forEach(function (group, index) {
+            if (index !== 4) {
+                let errorMessage = document.createElement('span');
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = errorMessages[index];
+                group.appendChild(errorMessage);
+            }
         });
+
         function checkInput(regex, value, errorElement) {
             if (!regex.test(value)) {
                 errorElement.style.display = 'inline-block';
@@ -68,6 +71,7 @@
                 errorElement.style.display = 'none';
             }
         }
+
         document.getElementById('myForm').addEventListener('submit', function (event) {
             event.preventDefault();
             let nameInput = document.getElementById('exampleFormControlInput1');
@@ -88,20 +92,16 @@
             checkInput(/^\+380\d{9}$/, phoneNumberValue, errorElements[2])
             checkInput(/[@.]/, emailValue, errorElements[3])
 
-           /* let hasErrors = Array.from(errorElements).some(function (errorElement){
+            let hasErrors = Array.from(errorElements).some(function (errorElement) {
                 return errorElement.style.display !== `none`
             })
-            console.log(hasErrors)
-            if (!hasErrors){*/
+            if (!hasErrors) {
                 let formData = new FormData(this);
-
                 formData.forEach(function (value, key) {
-
                     console.log('Имя поля:', key);
                     console.log('Значение поля:', value);
-
                 });
-            //}
+            }
         })
     })
 </script>

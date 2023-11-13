@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .slider__prev,
 .slider__next {
@@ -31,6 +32,7 @@
     text-align: center;
     opacity: 0;
     animation: fadeInFromNone 0.5s ease-out;
+    position: relative;
 }
 @keyframes fadeInFromNone {
     from {
@@ -46,4 +48,16 @@
 .slider li.current {
     opacity: 1;
     display: block;
+}
+.dots{
+    position: absolute;
+    left: 90px;
+    top: 120px;
+}
+.dots1, .dots2, .dots3, .dots4, dots5 {
+    display: inline-block;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #1e3241;
+    color: #1e3241;
 }

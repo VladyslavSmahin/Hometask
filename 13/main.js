@@ -36,6 +36,7 @@ function slider(prevButton, nextButton, listElement) {
     function dotsSlides (dot, slideOn) {
         dot.addEventListener(`click`, function (){
             slides.forEach(s => s.classList.remove(ACTIVE_CLASS_NAME));
+            console.log(slides)
             slideOn.classList.add(ACTIVE_CLASS_NAME)
         })
     }

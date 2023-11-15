@@ -16,7 +16,7 @@ function slider(prevButton, nextButton, listElement) {
             prevOrNextElement.classList.add(ACTIVE_CLASS_NAME)
         }
 
-        function changeButton() {
+        function changeDots() {
             const isPrevButton = event.target === prevButton
             const activeDots = document.getElementById(`dots`).querySelector(`.${ACTIVE_DOTS}`)
             const prevOrNextDots = isPrevButton
@@ -29,7 +29,7 @@ function slider(prevButton, nextButton, listElement) {
             }
         }
 
-        changeButton()
+        changeDots()
 
         function removeButton(button, slide) {
             if (slide.classList.contains(`current`)) {

@@ -49,15 +49,20 @@
     opacity: 1;
     display: block;
 }
-.dots{
+#dots{
     position: absolute;
-    left: 90px;
-    top: 120px;
+    top: 150px;
+    left: 905px
+
 }
-.dots1, .dots2, .dots3, .dots4, dots5 {
+.dots1, .dots2, .dots3, .dots4, .dots5 {
     display: inline-block;
     width: 20px;
     border-radius: 50%;
-    background-color: #1e3241;
-    color: #1e3241;
+    background-color: gray;
+    color: gray;
+}
+.currentDots{
+    background-color: white;
+    color: white;
 }

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h3>Таймер:</h3>
+<div id="timer">00:00</div>
+<script>
+    let countdown = 85;
+    let timer = setInterval(function () {
+        countdown--;
+
+        let minutes = Math.floor(countdown / 60);
+        let seconds = countdown % 60;
+
+        minutes = (minutes < 10) ? '0' + minutes : minutes;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+        document.getElementById('timer').innerHTML = minutes + ':' + seconds;
+
+        if (countdown <= 0) {
+            clearInterval(timer);
+            document.getElementById('timer').innerHTML = '00:00';
+            document.getElementById('timer').insertAdjacentHTML('afterend', '<p>Время истекло!</p>');
+        }
+    }, 1000);
+
+</script>
+</body>
+</html>

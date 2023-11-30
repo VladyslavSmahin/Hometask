@@ -1,8 +1,14 @@
 const getWeatherData = async function getWeather() {
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=KYIV&units=metric&appid=62407cd57624d3c4aacfa1ac539eb018`, {
-        method: `GET`
-    })
-    const data = await response.json();
+    let data;
+    try {
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=KYIV&units=metric&appid=62407cd57624d3c4aacfa1ac539eb018`, {
+            method: `GET`
+        })
+        data = await response.json();
+    }catch (error){
+        console.error('Произошла ошибка при получении данных о погоде:', error);
+        return
+    }
     const container = document.querySelector(`#weather`);
     const temperature = data.main.temp;
     const pressure = data.main.pressure;
@@ -42,6 +48,10 @@ const refreshButton = document.querySelector(`#refreshButton`);
 refreshButton.addEventListener(`click`, function () {
     const container = document.getElementById('weather');
     container.innerHTML = '';
-    getWeatherData()
+    try {
+        getWeatherData()
+    } catch(error)  {
+        console.error('Ошибка при обновлении данных о погоде:', error);
+    }
 })
 document.addEventListener(`DOMContentLoaded`, getWeatherData)

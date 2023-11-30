@@ -1,0 +1,22 @@
+#weather {
+    background-image: linear-gradient(to bottom right, #1f3c72, #5495c4);
+    position: absolute;
+    padding: 20px;
+}
+
+#refreshButton {
+    position: relative;
+    left: 440px;
+    top: 20px;
+}
+
+img {
+    position: fixed;
+    top: 20px;
+    left: 250px;
+    width: 200px;
+    height: auto;
+}
+h3{
+    color: #FFFFFF;
+}

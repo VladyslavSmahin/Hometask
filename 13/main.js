@@ -66,7 +66,6 @@ function slider(prevButton, nextButton, listElement) {
             }
         })
     }
-
     dotsSlides(dots1, slides[0])
     dotsSlides(dots2, slides[1])
     dotsSlides(dots3, slides[2])

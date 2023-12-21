@@ -1,34 +1,3 @@
-/*
-document.addEventListener('DOMContentLoaded', function () {
-    const apiUrl = 'https://swapi.dev/api/';
-
-    async function sendRequest() {
-        const userInput = document.getElementById('userInput').value;
-        const requestUrl = `${apiUrl}/${userInput}`;
-        const spinner = document.getElementById('spinner');
-        const div = document.getElementById('response');
-
-        try {
-            spinner.style.opacity = '1'
-
-            const response = await fetch(requestUrl);
-            if (!response.ok) {
-                throw new Error('Ошибка');
-            }
-            const data = await response.json();
-            div.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-        } catch (error) {
-            console.error('Ошибка:', error);
-            div.innerText = 'Произошла ошибка при выполнении запроса.';
-        } finally {
-            spinner.style.opacity = '0'
-        }
-    }
-
-    document.getElementById('lightButton').addEventListener('click', sendRequest);
-});
-*/
-
 document.addEventListener('DOMContentLoaded', function () {
     const apiUrl = 'https://swapi.dev/api/';
 
@@ -66,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             preResponse.innerText = JSON.stringify(data, null, 2);
 
-            responseWrapper.style.display = 'block'; // Показываем блок с данными
+            responseWrapper.style.display = 'block';
         } catch (error) {
             console.error('Ошибка:', error);
-            responseWrapper.style.display = 'none'; // Скрываем блок с данными в случае ошибки
+            responseWrapper.style.display = 'none';
         } finally {
             spinner.style.opacity = '0';
         }

@@ -25,13 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const data = await response.json();
 
-            if (requestData.controller !== undefined) {
-                divController.innerText = `${requestData.controller}`;
-            }
+            divController.innerText = requestData.controller !== undefined ? requestData.controller : '';
+            divId.innerText = requestData.id !== undefined ? requestData.id : '';
 
-            if (requestData.id !== undefined) {
-                divId.innerText = `${requestData.id}`;
-            }
 
             preResponse.innerText = JSON.stringify(data, null, 2);
 

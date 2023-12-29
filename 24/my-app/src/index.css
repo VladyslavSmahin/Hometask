@@ -1,26 +1,23 @@
-@import "~bootstrap";
-
 body {
   background-image: url("images/star-wars-header-1024x576.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
-.btn-light {
-  opacity: 90%;
-  width: 500px;
-  text-align: center;
-
-}
-
-.spinner-border {
+.spinner-border{
   display: inline-block;
-  opacity: 0;
+  /*opacity: 0;*/
   margin-top: 100px;
   margin-left: 46%;
   padding-left: 100px;
   padding-top: 100px;
+}
+.button {
+  text-align: center;
+  opacity: 90%;
+}
+.btn-light{
+  width: 500px;
 }
 #response {
   width: 1000px;
@@ -29,7 +26,6 @@ body {
   margin: 0 auto;
   vertical-align: middle;
 }
-
 #headerBlock {
   width: 1000px;
   background-color: rgba(255, 255, 255, 0.8);

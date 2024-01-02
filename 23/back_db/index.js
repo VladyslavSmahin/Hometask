@@ -1,10 +1,15 @@
-const { v4: uuidv4 } = require('uuid');
 const express = require(`express`);
+const mongoose = require("mongoose");
 const cors = require(`cors`);
+const { v4: uuidv4 } = require('uuid');
 const app = express();
 app.use(cors())
 app.use(express.json())
 app.use(express.static(`public`))
+const user = 'timaca8038';
+const password = "3CWR7GDM3EIJNzf2";
+//mongodb+srv://timaca8038:<password>@cluster0.gfosk2u.mongodb.net/?retryWrites=true&w=majority
+mongoose.connect
 let todos_db = [{
     id: uuidv4(),
     text: `text example`,

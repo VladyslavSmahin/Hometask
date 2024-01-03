@@ -16,11 +16,11 @@ $(`#post`).on(`click`, async () => {
         checkbox: false,
     })
 })
-$(`#post_id`).on(`click`, async () => {
-    const res = await axios.post(`${API_URL}/${$('#todo_id').val()}`,{
+$(`#put_id`).on(`click`, async () => {
+    const res = await axios.put(`${API_URL}/${$('#todo_id').val()}`,{
         text: $(`#todo_text`).val(),
     })
-    $(`#response1`).text(JSON.stringify(res.data, null, 2))
+    $(`#response2`).text(JSON.stringify(res.data, null, 2))
 })
 $(`#delete_id`).on(`click`, async () => {
     const res = await axios.delete(`${API_URL}/${$('#todo_id').val()}`)

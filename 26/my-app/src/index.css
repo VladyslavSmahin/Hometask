@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+ background-color: #8fb6a2;
+}
+#count1 {
+ position: relative;
+    left: -260px;
+}
+#count2 {
+    position: relative;
+    left: -145px;
+}
+#count4 {
+    position: relative;
+    right: -130px;
+}
+#count5 {
+    position: relative;
+    right: -260px;
+}

@@ -18,3 +18,9 @@ body {
     position: relative;
     right: -260px;
 }
+.result{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

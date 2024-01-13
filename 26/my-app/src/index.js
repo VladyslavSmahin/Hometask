@@ -17,17 +17,16 @@ class App extends React.Component {
                 count4: 0,
                 count5: 0
             },
-            smileMassive: {
-                count1: '/smiles/1.svg',
-                count2: '/smiles/2.svg',
-                count3: '/smiles/3.svg',
-                count4: '/smiles/4.svg',
-                count5: '/smiles/5.svg'
-            },
+            smilesAndCounters: [
+                {id: '1', smileSrc: '/smiles/1.svg', counterKey: 'count1'},
+                {id: '2', smileSrc: '/smiles/2.svg', counterKey: 'count2'},
+                {id: '3', smileSrc: '/smiles/3.svg', counterKey: 'count3'},
+                {id: '4', smileSrc: '/smiles/4.svg', counterKey: 'count4'},
+                {id: '5', smileSrc: '/smiles/5.svg', counterKey: 'count5'},
+            ],
             showSpan: false,
             maxCounter: 0,
             showSmile: null,
-            isVisible: true
         };
     }
 
@@ -36,7 +35,6 @@ class App extends React.Component {
         if (savedCounters) {
             this.setState({counters: savedCounters});
         }
-
     }
 
     handleSmileClick = (id) => {
@@ -53,12 +51,15 @@ class App extends React.Component {
         const maxCounterKey = Object.keys(this.state.counters).find(
             key => this.state.counters[key] === maxCounter
         );
-        const showSmile = Object.keys(this.state.smileMassive).includes(maxCounterKey) ? this.state.smileMassive[maxCounterKey] : null;
+        const showSmile = this.state.smilesAndCounters.find(item => item.counterKey === maxCounterKey)?.smileSrc;
+        console.log(showSmile)
+        console.log(maxCounter)
+        console.log(maxCounterKey)
+        console.log(this.state.counters)
         this.setState({
             showSpan: true,
             maxCounter,
-            showSmile,
-            isVisible: true
+            showSmile
         });
 
     }
@@ -72,48 +73,43 @@ class App extends React.Component {
                 count4: 0,
                 count5: 0
             },
-            isVisible: false
+            showSmile: null,
         })
-
     }
 
     render() {
         const size = {width: "100px", height: "100px"};
         const flexCentre = "d-flex justify-content-center align-items-center";
-        const { isVisible } = this.state;
         const divStyle = {
-            visibility: isVisible ? 'visible' : 'hidden'
+            visibility: this.state.showSmile ? 'visible' : 'hidden'
         };
-        const smiles = [
-            { id: '1' },
-            { id: '2' },
-            { id: '3' },
-            { id: '4' },
-            { id: '5' },
-        ];
         return (
             <React.StrictMode>
                 <div className={flexCentre}>
-                    {smiles.map(item => (
-                    <Smile src={`/smiles/${item.id}.svg`} alt={item.id} size={size} clName={'m-4'}
-                           onClick={this.handleSmileClick} id={`count${item.id}`}/>))}
-                </div>
-                <div className={flexCentre}>
-                    {smiles.map(item => (
-                        <Counter id={`count${item.id}`}>
-                            {this.state.counters[`count${item.id}`]}
-                        </Counter>
+                    {this.state.smilesAndCounters.map(item => (
+                        <div key={item.id} style={{display: "flex", flexDirection: "column",}}>
+                            <Smile
+                                src={`/smiles/${item.id}.svg`}
+                                alt={item.id}
+                                size={size}
+                                clName={'m-4'}
+                                onClick={this.handleSmileClick}
+                                id={`count${item.id}`}/>
+                            <Counter id={`count${item.id}`}>
+                                {this.state.counters[`count${item.id}`]}
+                            </Counter>
+                        </div>
                     ))}
                 </div>
                 <div>
-                    <Button pos="center" text="Show Results" onClick={this.handleButtonClick}></Button>
+                    <Button pos="center" text="Show Results" onClick={this.handleButtonClick}/>
                     {this.state.showSpan && (
                         <>
-                        <div className={'result'} style={divStyle}>
-                            <h3 className={'m-4'}> Winner: {this.state.maxCounter}</h3>
-                            <Smile src={this.state.showSmile} alt={'img'} size={size}/>
-                        </div>
-                        <Button pos="center" text="Clear Results" onClick={this.clearAll} />
+                            <div className={'result'} style={divStyle}>
+                                <h3 className={'m-4'}> Winner: {this.state.maxCounter}</h3>
+                                <Smile src={this.state.showSmile} alt={'img'} size={size}/>
+                            </div>
+                            <Button pos="center" text="Clear Results" onClick={this.clearAll}/>
                         </>
                     )}
                 </div>

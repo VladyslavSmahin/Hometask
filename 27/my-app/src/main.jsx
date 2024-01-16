@@ -11,13 +11,13 @@ export function Main() {
     const [showSpan, setShowSpan] = useState(false);
     const [maxCounter, setMaxCounter] = useState(0);
     const [showSmile, setShowSmile] = useState(null);
-        const [counters, setCounters] = useState({
-            count1: 0,
-            count2: 0,
-            count3: 0,
-            count4: 0,
-            count5: 0
-        });
+    const [counters, setCounters] = useState([
+        { id: 'count1', value: 0},
+        { id: 'count2', value: 0},
+        { id: 'count3', value: 0},
+        { id: 'count4', value: 0},
+        { id: 'count5', value: 0},
+    ]);
 
         const [smilesAndCounters, setSmilesAndCounters] = useState([
             {id: '1', smileSrc: '/smiles/1.svg', counterKey: 'count1'},
@@ -38,14 +38,18 @@ export function Main() {
 
 
     const handleSmileClick = (id) => {
-        setCounters(prevState => {
-            const updatedCounters = {...prevState, [id]: prevState[id] + 1};
-            localStorage.setItem('counters', JSON.stringify(updatedCounters));
-            return updatedCounters;
+        setCounters((prevCounters) => {
+            return prevCounters.map((counter) => {
+                if (counter.id === id) {
+                    return { ...counter, value: counter.value + 1 };
+                }
+                return counter;
+            });
         });
     };
+
     const handleButtonClick = () => {
-        const values = Object.values(counters);
+        /*const values = Object.values(counters);
         const maxCounter = Math.max(...values)
         const maxCounterKey = Object.keys(counters).find(
             key => counters[key] === maxCounter
@@ -53,19 +57,19 @@ export function Main() {
         const showSmile = smilesAndCounters.find(item => item.counterKey === maxCounterKey)?.smileSrc;
         setShowSpan(true);
         setMaxCounter(maxCounter);
-        setShowSmile(showSmile);
+        setShowSmile(showSmile);*/
 
     }
     const clearAll = () => {
         localStorage.clear()
         setShowSmile( null)
-        setCounters({
+        /*setCounters({
             count1: 0,
             count2: 0,
             count3: 0,
             count4: 0,
             count5: 0
-        })
+        })*/
     }
     const size = {width: "100px", height: "100px"};
     const flexCentre = "d-flex justify-content-center align-items-center";

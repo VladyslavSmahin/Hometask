@@ -56,6 +56,8 @@ export function Main() {
         const winningSmile = smilesAndCounters.find(item => item.counterKey === maxCounterObject.id);
         if (winningSmile) {
             setWinner({ id: winningSmile.smileSrc, value: maxCounterObject.value });
+        } else {
+            console.log('нет победителя')
         }
     };
     const clearAll = () => {

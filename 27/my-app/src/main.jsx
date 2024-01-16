@@ -57,6 +57,7 @@ export function Main() {
         if (winningSmile) {
             setWinner({ id: winningSmile.smileSrc, value: maxCounterObject.value });
         } else {
+            setWinner({ id: undefined, value: undefined });
             console.log('нет победителя')
         }
     };

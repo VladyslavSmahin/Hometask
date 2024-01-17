@@ -16,7 +16,7 @@ class App extends React.Component {
                 count3: 0,
                 count4: 0,
                 count5: 0
-            },
+            } ,
             smilesAndCounters: [
                 {id: '1', smileSrc: '/smiles/1.svg', counterKey: 'count1'},
                 {id: '2', smileSrc: '/smiles/2.svg', counterKey: 'count2'},

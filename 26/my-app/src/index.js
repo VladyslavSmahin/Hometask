@@ -10,13 +10,14 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            counters: {
-                count1: 0,
-                count2: 0,
-                count3: 0,
-                count4: 0,
-                count5: 0
-            } ,
+            counters: [
+            { id: 'count1', value: 0 },
+            { id: 'count2', value: 0 },
+            { id: 'count3', value: 0 },
+            { id: 'count4', value: 0 },
+            { id: 'count5', value: 0 },
+        ],
+            winner: { id: 'count1', value: 0 },
             smilesAndCounters: [
                 {id: '1', smileSrc: '/smiles/1.svg', counterKey: 'count1'},
                 {id: '2', smileSrc: '/smiles/2.svg', counterKey: 'count2'},
@@ -25,57 +26,64 @@ class App extends React.Component {
                 {id: '5', smileSrc: '/smiles/5.svg', counterKey: 'count5'},
             ],
             showSpan: false,
-            maxCounter: 0,
             showSmile: null,
         };
     }
 
     componentDidMount() {
-        const savedCounters = JSON.parse(localStorage.getItem('counters'));
-        if (savedCounters) {
-            this.setState({counters: savedCounters});
+        try {
+            const savedCounters = JSON.parse(localStorage.getItem('counters'));
+            if (savedCounters) {
+                this.setState({ counters: savedCounters });
+            }
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
         }
     }
 
+
     handleSmileClick = (id) => {
-        this.setState(prevState => {
-            const updatedCounters = {...prevState.counters};
-            updatedCounters[id] += 1;
+        this.setState((prevState) => {
+            const updatedCounters = prevState.counters.map((counter) => {
+                if (counter.id === id) {
+                    return { ...counter, value: counter.value + 1 };
+                }
+                return counter;
+            });
+
             localStorage.setItem('counters', JSON.stringify(updatedCounters));
-            return {counters: updatedCounters};
+            return { counters: updatedCounters };
         });
     };
+
+
     handleButtonClick = () => {
-        const values = Object.values(this.state.counters);
-        const maxCounter = Math.max(...values)
-        const maxCounterKey = Object.keys(this.state.counters).find(
-            key => this.state.counters[key] === maxCounter
-        );
-        const showSmile = this.state.smilesAndCounters.find(item => item.counterKey === maxCounterKey)?.smileSrc;
-        console.log(showSmile)
-        console.log(maxCounter)
-        console.log(maxCounterKey)
-        console.log(this.state.counters)
+        const maxCounterObject = this.state.counters.reduce((maxCounterObject, counter) => {
+            return counter.value > maxCounterObject.value ? counter : maxCounterObject;
+        }, this.state.winner);
+
+        const winningSmile = this.state.smilesAndCounters.find(item => item.counterKey === maxCounterObject.id);
         this.setState({
             showSpan: true,
-            maxCounter,
-            showSmile
+            showSmile: true,
+            winner: { id: winningSmile.smileSrc, value: maxCounterObject.value }
         });
-
-    }
+    };
     clearAll = () => {
-        localStorage.clear()
+        localStorage.clear();
         this.setState({
-            counters: {
-                count1: 0,
-                count2: 0,
-                count3: 0,
-                count4: 0,
-                count5: 0
-            },
+            counters: [
+                { id: 'count1', value: 0 },
+                { id: 'count2', value: 0 },
+                { id: 'count3', value: 0 },
+                { id: 'count4', value: 0 },
+                { id: 'count5', value: 0 },
+            ],
             showSmile: null,
-        })
-    }
+            winner: { id: 'count1', value: 0 },
+        });
+    };
+
 
     render() {
         const size = {width: "100px", height: "100px"};
@@ -87,7 +95,7 @@ class App extends React.Component {
             <React.StrictMode>
                 <div className={flexCentre}>
                     {this.state.smilesAndCounters.map(item => (
-                        <div key={item.id} style={{display: "flex", flexDirection: "column",}}>
+                        <div key={item.counterKey} style={{display: "flex", flexDirection: "column",}}>
                             <Smile
                                 src={`/smiles/${item.id}.svg`}
                                 alt={item.id}
@@ -96,7 +104,7 @@ class App extends React.Component {
                                 onClick={this.handleSmileClick}
                                 id={`count${item.id}`}/>
                             <Counter id={`count${item.id}`}>
-                                {this.state.counters[`count${item.id}`]}
+                                {this.state.counters.find(counter => counter.id === `count${item.id}`).value}
                             </Counter>
                         </div>
                     ))}
@@ -106,8 +114,8 @@ class App extends React.Component {
                     {this.state.showSpan && (
                         <>
                             <div className={'result'} style={divStyle}>
-                                <h3 className={'m-4'}> Winner: {this.state.maxCounter}</h3>
-                                <Smile src={this.state.showSmile} alt={'img'} size={size}/>
+                                <h3 className={'m-4'}> Winner: {this.state.winner.value}</h3>
+                                <Smile src={this.state.winner.id} alt={'img'} size={size}/>
                             </div>
                             <Button pos="center" text="Clear Results" onClick={this.clearAll}/>
                         </>

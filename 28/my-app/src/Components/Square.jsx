@@ -1,5 +1,5 @@
 function Square(props) {
-    const {value, onClick} = props
+    const {value} = props
     return (
         <>
             <button>

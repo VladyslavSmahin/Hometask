@@ -13,7 +13,7 @@ function Board() {
             return
         } else {
             const newSquares = [...squares];
-            newSquares[position] = xIsNext ? 'x' : 0;
+            newSquares[position] = xIsNext ? 'x' : "0";
             setSquares(newSquares)
             setXIsNext(!xIsNext)
         }

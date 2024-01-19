@@ -5,3 +5,16 @@
     margin: 0;
     padding: 0;
 }
+.flex{
+    display: flex;
+}
+.resetB{
+    margin-top: 10px;
+    width: 150px;
+}
+.winner{
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 150px;
+    text-align: center;
+}

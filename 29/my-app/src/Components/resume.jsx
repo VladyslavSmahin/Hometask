@@ -45,7 +45,10 @@ const Resume = () => {
                 <div className="w-full border-b mb-4 pb-4">
                     <h3 className={`${currentTheme.textGray200} pl-2 pb-1`}>ADDITIONAL COURSES AND TRAININGS</h3>
                     <ul className="pl-5 list-disc">
-                        <li>Front-end Basic at Hillel IT School</li>
+                        <li>Front-end Basic at Hillel IT School <span className='ml-5 p-1 border'>excellent</span>
+                            <br/>
+                        <Link href='https://certificate.ithillel.ua/view/39070873' text='Certificate'></Link></li>
+
                         <li>Front-end Pro at Hillel IT School</li>
                     </ul>
                 </div>

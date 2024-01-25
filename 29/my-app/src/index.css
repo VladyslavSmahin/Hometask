@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'YourFont';
+    src: url('../public/fonts/QueensidesLight-ZVj3l.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+header, footer {
+    font-family: 'YourFont', sans-serif;
+}
+.section1{
+    max-width: 70%;
+}
+.leftCol{
+    width: 70%;
+}
+.rightCol{
+    width: 30%;
+}

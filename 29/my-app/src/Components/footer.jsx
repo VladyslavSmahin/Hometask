@@ -17,8 +17,8 @@ const Footer = () => {
                     <nav className="text-xl flex-col flex text-white">
                         <Link children={"Home"} href='/'/>
                         <Link children={"Resume"} href='/Resume'/>
-                        <Link children={"Services"} href='/Services'/>
-                        <Link children={"Contact"} href='/Contact'/>
+                        <Link children={"Painting gallery"} href='/Gallery'/>
+                        <Link children={"To Do"} href='/ToDo'/>
                     </nav>
                 </div>
                 <div className="flex items-center">

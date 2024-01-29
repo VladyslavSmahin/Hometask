@@ -5,7 +5,8 @@ import Footer from './Components/Footer';
 import Main from "./Components/mainContent.jsx";
 import {DarkThemeContext, LightThemeContext} from "./helpers/context.js";
 import Projects from "./pages/Projects.jsx";
-
+import ToDo from "./pages/ToDO.jsx";
+import Gallery from "./pages/Gallery.jsx";
 
 const App = () => {
     const darkTheme = useContext(DarkThemeContext);
@@ -31,6 +32,8 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Projects/>}/>
                         <Route path="/Resume" element={<Main className="container mx-auto mt-4 "></Main>}/>
+                        <Route path='/ToDo' element={<ToDo/>}/>
+                        <Route path='/Gallery' element={<Gallery/>}/>
                     </Routes>
                     <Footer/>
                 </div>

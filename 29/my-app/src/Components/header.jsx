@@ -10,8 +10,8 @@ const Header = () => {
                 <nav className="space-x-4 text-2xl text-white">
                     <Link children={"Home"} href='/'/>
                     <Link children={"Resume"} href='/Resume'/>
-                    <Link children={"Services"} href='/Services'/>
-                    <Link children={"Contact"} href='/Contact'/>
+                    <Link children={"Painting gallery"} href='/Gallery'/>
+                    <Link children={"To Do"} href='/ToDo'/>
                 </nav>
             </div>
         </header>

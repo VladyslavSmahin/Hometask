@@ -1,9 +1,10 @@
 import React, {useContext, useState, useEffect} from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Main from "./Components/mainContent.jsx";
 import {DarkThemeContext, LightThemeContext} from "./helpers/context.js";
-import Resume from "./Components/resume.jsx";
+import Projects from "./pages/Projects.jsx";
 
 
 const App = () => {
@@ -20,16 +21,20 @@ const App = () => {
     }, [currentTheme]);
     return (
         <DarkThemeContext.Provider value={currentTheme}>
-            <div className={`font-sans min-h-screen flex flex-col ${currentTheme.backgroundMain} `}>
-                <div className='text-center'>
-                    <button className='text-xs text-center p-1'
-                            onClick={handleChange}>{currentTheme.textButton}</button>
+            <BrowserRouter>
+                <div className={`font-sans min-h-screen flex flex-col ${currentTheme.backgroundMain} `}>
+                    <div className='text-center'>
+                        <button className='text-xs text-center p-1'
+                                onClick={handleChange}>{currentTheme.textButton}</button>
+                    </div>
+                    <Header/>
+                    <Routes>
+                        <Route path="/" element={<Projects/>}/>
+                        <Route path="/Resume" element={<Main className="container mx-auto mt-4 "></Main>}/>
+                    </Routes>
+                    <Footer/>
                 </div>
-                <Header/>
-                <Main className="container mx-auto mt-4 ">
-                </Main>
-                <Footer/>
-            </div>
+            </BrowserRouter>
         </DarkThemeContext.Provider>
 
 

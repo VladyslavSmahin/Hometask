@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {DarkThemeContext} from "../helpers/context.js";
-import Resume from "./resume.jsx";
+import Resume from "../pages/resume.jsx";
 
 const Main = () => {
     const currentTheme = useContext(DarkThemeContext)

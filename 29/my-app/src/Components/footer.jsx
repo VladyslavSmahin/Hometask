@@ -10,16 +10,15 @@ const Footer = () => {
                 <div>
                     <p>Phone number: +38 (093) 728 42 98</p>
                     <p>Email: vladislavsmagin1@gmail.com</p>
-                    <p>Git:  <Link text={"VladyslavSmahin"} href={'https://github.com/VladyslavSmahin'}/></p>
+                    <p>Git:  <Link children={"VladyslavSmahin"} href={'https://github.com/VladyslavSmahin'}/></p>
                     <p>&copy; 2024</p>
                 </div>
                 <div className="mx-auto flex items-center">
                     <nav className="text-xl flex-col flex text-white">
-
-                        <Link text={"Home"} href={'#'}/>
-                        <Link text={"About"} href={'#'}/>
-                        <Link text={"Services"} href={'#'}/>
-                        <Link text={"Contact"} href={'#'}/>
+                        <Link children={"Home"} href='/'/>
+                        <Link children={"Resume"} href='/Resume'/>
+                        <Link children={"Services"} href='/Services'/>
+                        <Link children={"Contact"} href='/Contact'/>
                     </nav>
                 </div>
                 <div className="flex items-center">

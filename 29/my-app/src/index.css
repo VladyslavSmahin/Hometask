@@ -8,7 +8,7 @@
     font-weight: normal;
     font-style: normal;
 }
-header, footer {
+header, footer, h2 {
     font-family: 'YourFont', sans-serif;
 }
 .section1{

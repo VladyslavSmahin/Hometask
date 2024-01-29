@@ -3,10 +3,10 @@ import {useContext} from "react";
 import {DarkThemeContext} from "../helpers/context.js";
 
 function Link (props) {
-    const {text, href} = props
+    const {children, href} = props
     const currentTheme = useContext(DarkThemeContext)
     return(
-        <a href={href} target='_blank' className={currentTheme.colorLinks }>{text}</a>
+        <a href={href} className={currentTheme.colorLinks }>{children}</a>
     )
 }
  export default Link

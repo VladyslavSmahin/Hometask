@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import Link from "./links.jsx";
+import Link from "../Components/links.jsx";
 import {DarkThemeContext} from "../helpers/context.js";
-import CheckBox from './checkbox.jsx'
+import CheckBox from '../Components/checkbox.jsx'
 
 const Resume = () => {
     const currentTheme = useContext(DarkThemeContext)
@@ -77,9 +77,9 @@ const Resume = () => {
                     <p className='pb-3'>vladislavsmagin1@gmail.com</p>
                     <h5 className='pl-2 text-xs'>Phone</h5>
                     <p className='pb-3'>+380937284298</p>
-                    <Link className='pb-3' href='https://t.me/VladyslavSmagin' text={'Telegram'} />
-                    <Link className='pb-3' href='https://www.linkedin.com/in/vladyslavsmahin/' text={'LinkedIn'} />
-                    <Link className='pb-3' text={"GitHub"} href={'https://github.com/VladyslavSmahin'}/>
+                    <Link className='pb-3' href='https://t.me/VladyslavSmagin' children={'Telegram'} />
+                    <Link className='pb-3' href='https://www.linkedin.com/in/vladyslavsmahin/' children={'LinkedIn'} />
+                    <Link className='pb-3' children={"GitHub"} href={'https://github.com/VladyslavSmahin'}/>
                 </div>
                 <div className="w-full border-b mb-4 pb-4">
                     <h3 className={`${currentTheme.textGray200} pl-2 pb-1`}>LANGUAGES</h3>

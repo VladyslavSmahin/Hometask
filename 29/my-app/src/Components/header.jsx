@@ -8,10 +8,10 @@ const Header = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-3xl font-bold">My Logo</div>
                 <nav className="space-x-4 text-2xl text-white">
-                    <Link children={"Home"} href='/'/>
-                    <Link children={"Resume"} href='/Resume'/>
-                    <Link children={"Painting gallery"} href='/Gallery'/>
-                    <Link children={"To Do"} href='/ToDo'/>
+                    <Link children={"Welcome"} to='/'/>
+                    <Link children={"Resume"} to='/Resume'/>
+                    <Link children={"Painting gallery"} to='/Gallery'/>
+                    <Link children={"To Do"} to='/ToDo'/>
                 </nav>
             </div>
         </header>

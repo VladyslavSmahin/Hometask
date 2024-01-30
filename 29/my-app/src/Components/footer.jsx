@@ -15,10 +15,10 @@ const Footer = () => {
                 </div>
                 <div className="mx-auto flex items-center">
                     <nav className="text-xl flex-col flex text-white">
-                        <Link children={"Home"} href='/'/>
-                        <Link children={"Resume"} href='/Resume'/>
-                        <Link children={"Painting gallery"} href='/Gallery'/>
-                        <Link children={"To Do"} href='/ToDo'/>
+                        <Link children={"Home"} to='/'/>
+                        <Link children={"Resume"} to='/Resume'/>
+                        <Link children={"Painting gallery"} to='/Gallery'/>
+                        <Link children={"To Do"} to='/ToDo'/>
                     </nav>
                 </div>
                 <div className="flex items-center">

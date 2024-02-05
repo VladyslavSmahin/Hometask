@@ -5,8 +5,7 @@
     import Input from "../Components/input.jsx";
 
 
-    const ToDo = (props) => {
-        const {handleSubmit} = props
+    const ToDo = () => {
         const [localStorageData, setLocalStorageData] = useState([]);
         const currentTheme = useContext(DarkThemeContext)
         const [inputValue, setInputValue] = useState('');
@@ -22,7 +21,7 @@
             return errors;
         }
 
-        const addTodo = (event) => {
+        const addTodo = (event,values) => {
             event.preventDefault();
             if (inputValue !== '') {
                 const newData = [...localStorageData, values.myField];
@@ -38,7 +37,7 @@
                 <Form
                     validate={validateLogin}
                     onSubmit={addTodo}
-                    render={({ valid }) => (
+                    render={({handleSubmit, valid }) => (
                         <form onSubmit={handleSubmit}  className={`form ${currentTheme.backgroundHeader}`} >
                             <Field
                                 name="myField"

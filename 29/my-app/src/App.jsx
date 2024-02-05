@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+import Header from './Components/header.jsx';
+import Footer from './Components/footer.jsx';
 import Main from "./Components/mainContent.jsx";
 import {DarkThemeContext, LightThemeContext} from "./helpers/context.js";
 import Projects from "./pages/Projects.jsx";

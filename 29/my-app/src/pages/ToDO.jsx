@@ -1,4 +1,4 @@
-    import React, {useContext, useState} from 'react';
+    import React, {useContext, useState, useEffect} from 'react';
     import {DarkThemeContext} from "../helpers/context.js";
     import Button from "../Components/Button.jsx"
     import {Field, Form} from "react-final-form";
@@ -8,7 +8,7 @@
     const ToDo = () => {
         const [localStorageData, setLocalStorageData] = useState([]);
         const currentTheme = useContext(DarkThemeContext)
-        const [inputValue, setInputValue] = useState('');
+        const [inputValue, setInputValue] = useState();
         const handleChange = (event) => {
             setInputValue(event.target.value);
         };
@@ -21,16 +21,32 @@
             return errors;
         }
 
-        const addTodo = (event,values) => {
-            event.preventDefault();
-            if (inputValue !== '') {
-                const newData = [...localStorageData, values.myField];
+        const addTodo = (event,values,valid) => {
+            console.log(`sended:`,event.myField )
+            console.log(event.myField)
+            if (valid) {
+                const newData = [...localStorageData, event.myField];
                 setLocalStorageData(newData);
-                localStorage.setItem('myLocalStorageData', JSON.stringify(newData));
                 setInputValue('');
-                console.log(`sended:`,newData)
+                console.log(inputValue)
             }
         };
+        const removeButton = (index) => {
+            const updatedData = [...localStorageData];
+            updatedData.splice(index, 1);
+            setLocalStorageData(updatedData);
+            localStorage.setItem('localStorageData', JSON.stringify(updatedData));
+        };
+
+        useEffect(() => {
+            localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
+        }, [localStorageData]);
+
+        useEffect(() => {
+            console.log(inputValue);
+        }, [inputValue]);
+
+
         return (
             <div>
                 <h1 className={`${currentTheme.textColor} pt-5 text-4xl`}>ToDoList</h1>
@@ -44,9 +60,9 @@
                                 component={Input}
                                 placeholder='your text'
                                 label='Email'
+                                value={inputValue}
                                 type='email'
                                 className="form__input"
-                                onChange={handleChange}
                             >
                             </Field>
                             <Button className="p-3 bg-emerald-900 text-slate-50" disabled={!valid} type="submit" text='Add'></Button>
@@ -58,11 +74,12 @@
                     <ul>
                         {localStorageData.map((todo, index) => (
                             <li key={index} className="todo-item">
-                                <input type="checkbox"/>
+                                <input type="checkbox" />
                                 <span className="todo-item__description">{todo}</span>
-                                <Button className="p-3 bg-emerald-900 text-slate-50" text='Delete'></Button>
+                                <Button onClick={() => removeButton(index)} className="p-3 bg-emerald-900 text-slate-50" text='Delete'></Button>
                             </li>
                         ))}
+
                     </ul>
                 )}
             </div>

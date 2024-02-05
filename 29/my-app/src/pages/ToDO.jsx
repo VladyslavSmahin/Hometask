@@ -5,7 +5,8 @@ import {Field, Form} from "react-final-form";
 import Input from "../Components/input.jsx";
 
 
-const ToDo = () => {
+const ToDo = (props) => {
+    const {handleSubmit} = props
     const [localStorageData, setLocalStorageData] = useState([]);
     const currentTheme = useContext(DarkThemeContext)
     const [inputValue, setInputValue] = useState('');
@@ -39,14 +40,13 @@ const ToDo = () => {
                 validate={validateLogin}
                 onSubmit={addTodo}
                 render={({ valid }) => (
-                    <form className={`form ${currentTheme.backgroundHeader}`} >
+                    <form onSubmit={handleSubmit}  className={`form ${currentTheme.backgroundHeader}`} >
                         <Field
                             name="myField"
                             component={Input}
                             placeholder='your text'
                             label='Email'
                             type='email'
-                            required
                             className="form__input"
                             onChange={handleChange}
                         />

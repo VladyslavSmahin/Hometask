@@ -4,7 +4,7 @@ function Button (props) {
     const {text, className, onClick, disabled} = props
     return (
         <div  >
-            <button type="button"
+            <button type="submit"
                     className={className}
                     disabled={disabled}
                     onClick={onClick}

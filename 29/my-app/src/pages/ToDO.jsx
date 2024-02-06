@@ -8,10 +8,6 @@
     const ToDo = () => {
         const [localStorageData, setLocalStorageData] = useState([]);
         const currentTheme = useContext(DarkThemeContext)
-        const [inputValue, setInputValue] = useState();
-        const handleChange = (event) => {
-            setInputValue(event.target.value);
-        };
 
         const validateLogin = (values) => {
             const errors = {};
@@ -21,16 +17,12 @@
             return errors;
         }
 
-        const addTodo = (event,values,valid) => {
-            console.log(`sended:`,event.myField )
-            console.log(event.myField)
-            if (valid) {
-                const newData = [...localStorageData, event.myField];
-                setLocalStorageData(newData);
-                setInputValue('');
-                console.log(inputValue)
-            }
+        const addTodo = (values, helpers) => {
+            const newData = [...localStorageData, values.myField];
+            setLocalStorageData(newData);
+            helpers.reset()
         };
+
         const removeButton = (index) => {
             const updatedData = [...localStorageData];
             updatedData.splice(index, 1);
@@ -41,11 +33,6 @@
         useEffect(() => {
             localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
         }, [localStorageData]);
-
-        useEffect(() => {
-            console.log(inputValue);
-        }, [inputValue]);
-
 
         return (
             <div>
@@ -60,12 +47,11 @@
                                 component={Input}
                                 placeholder='your text'
                                 label='Email'
-                                value={inputValue}
                                 type='email'
                                 className="form__input"
                             >
                             </Field>
-                            <Button className="p-3 bg-emerald-900 text-slate-50" disabled={!valid} type="submit" text='Add'></Button>
+                            <Button className="p-3 mt-4 bg-emerald-900 text-slate-50" disabled={!valid} type="submit" text='Add'></Button>
 
                         </form>
                     )}

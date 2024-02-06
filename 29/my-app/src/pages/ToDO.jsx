@@ -6,16 +6,23 @@
 
 
     const ToDo = () => {
+        const [inputError, setInputError] = useState('');
+
         const [localStorageData, setLocalStorageData] = useState([]);
         const currentTheme = useContext(DarkThemeContext)
 
         const validateLogin = (values) => {
             const errors = {};
             if (!values.myField) {
-                errors.myField = 'Required'
+                errors.myField = 'Required';
+                console.log(errors.myField)
+            } else if (values.myField.length < 5) {
+                errors.myField = 'Must be at least 5 characters';
+                console.log(errors.myField)
             }
             return errors;
-        }
+        };
+
 
         const addTodo = (values, helpers) => {
             const newData = [...localStorageData, values.myField];

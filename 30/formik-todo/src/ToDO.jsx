@@ -14,7 +14,7 @@ const TodoForm = ({ addTodo }) => {
             initialValues={{ todoText: '' }}
             validationSchema={validationSchema}
             validateOnChange={true}
-            validateOnBlur={true}
+            validateOnBlur={false}
             onSubmit={(values, { resetForm }) => {
                 addTodo(values.todoText);
                 resetForm();

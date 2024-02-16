@@ -10,6 +10,7 @@ function Footer(){
     const onClear = () => {
         dispatch(TodoSlice.actions.setItems([]))
     }
+
     return (
         <>
             Count: {items.length} <Button onClick={onClear}>Clear</Button>

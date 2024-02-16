@@ -12,7 +12,7 @@ const todoSlice = createSlice({
             state.items = action.payload
         },
         addItems: (state, action) => {
-            state.items.push({text: action.payload, id: uuidv4()})
+            state.items.push(action.payload)
         },
         setLoading: (state, action) => {
             state.loading = action.payload

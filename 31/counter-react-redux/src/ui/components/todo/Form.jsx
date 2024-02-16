@@ -1,19 +1,20 @@
 import {useDispatch, useSelector} from "react-redux";
-import TodoSlice from "../../../engine/todo/todoSlice.js";
 import selectors from "../../../engine/todo/selectors.js";
+import {setData} from "../../../engine/todo/thunks.js";
+
 
 function Form(props) {
     const {children} = props
     const dispatch = useDispatch()
+    const loading = useSelector(selectors.loading)
+    const items = useSelector(selectors.items)
     const onSubmit = (event) => {
-        event.preventDefault()
-        dispatch(TodoSlice.actions.addItems(event.target.text_input.value))
-        event.target.text_input.value = ''
+        dispatch(setData(event, items))
     }
     return (
         <form onSubmit={onSubmit}>
             <input type="text" name='text_input'/>
-            <button>{children}</button>
+            <button disabled={loading}>{children}</button>
         </form>
     );
 }

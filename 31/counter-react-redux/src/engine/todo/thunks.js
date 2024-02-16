@@ -1,12 +1,12 @@
 import todoSlice from "./todoSlice.js";
 import TodoSlice from "./todoSlice.js";
 
-const getData = (arg) => {
-    console.log(arg)
-    return (dispatch) =>{
-        const data = JSON.parse(localStorage.getItem('items'));
+const getData = () => {
+    return (dispatch) => {
+        const data = JSON.parse(localStorage.getItem('items')) || [];
         dispatch(todoSlice.actions.setItems(data));
         dispatch(todoSlice.actions.setLoading(false))
+        console.log(data)
     }
 }
 

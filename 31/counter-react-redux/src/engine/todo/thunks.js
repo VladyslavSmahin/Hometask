@@ -6,7 +6,6 @@ const getData = () => {
         const data = JSON.parse(localStorage.getItem('items')) || [];
         dispatch(todoSlice.actions.setItems(data));
         dispatch(todoSlice.actions.setLoading(false))
-        console.log(data)
     }
 }
 

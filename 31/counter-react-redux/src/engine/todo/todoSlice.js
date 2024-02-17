@@ -17,7 +17,10 @@ const todoSlice = createSlice({
         setLoading: (state, action) => {
             state.loading = action.payload
         },
+        deleteItem: (state, action) => {
+            state.items = state.items.filter(item => item !== action.payload);
+            localStorage.setItem('items', JSON.stringify(state.items));
+        },
     }
 })
-
 export default todoSlice;

@@ -4,6 +4,7 @@ import Button from "../counter/Button.jsx";
 import selectors from "../../../engine/todo/selectors.js";
 import {useEffect} from "react";
 import {getData} from "../../../engine/todo/thunks.js";
+import TodoSlice from "../../../engine/todo/todoSlice.js";
 
 
 function List() {
@@ -14,6 +15,11 @@ function List() {
         dispatch(getData())
     }, []);
 
+    const handleDelete = (item) => () => {
+        dispatch(TodoSlice.actions.deleteItem(item));
+    };
+
+
     return (
         <>
             {
@@ -21,7 +27,8 @@ function List() {
                     ? <span>No data </span>
                     :
                     (
-                        items.map((item, index) => <ListItem key={index}>{item}<Button>Delete</Button></ListItem>)
+                        items.map((item, index) => <ListItem key={index}>{item}
+                            <Button onClick={handleDelete(item)}>Delete</Button></ListItem>)
                     )
             }
         </>

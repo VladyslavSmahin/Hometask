@@ -7,6 +7,7 @@ function Form(props) {
     const {children} = props
     const dispatch = useDispatch()
     const loading = useSelector(selectors.loading)
+    console.log(loading)
     const items = useSelector(selectors.items)
     const onSubmit = (event) => {
         dispatch(setData(event, items))

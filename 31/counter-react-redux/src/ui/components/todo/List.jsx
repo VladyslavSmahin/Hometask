@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Button from "../counter/Button.jsx";
 import selectors from "../../../engine/todo/selectors.js";
 import {useEffect} from "react";
-import {getData} from "../../../engine/todo/thunks.js";
-import TodoSlice from "../../../engine/todo/todoSlice.js";
+import {getData, clearItem} from "../../../engine/todo/thunks.js";
 
 
 function List() {
@@ -15,9 +14,7 @@ function List() {
         dispatch(getData())
     }, []);
 
-    const handleDelete = (item) => () => {
-        dispatch(TodoSlice.actions.deleteItem(item));
-    };
+    const handleDelete = (item) => () => dispatch(clearItem(item, items))
 
 
     return (

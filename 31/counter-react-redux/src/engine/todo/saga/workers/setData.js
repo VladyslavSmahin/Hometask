@@ -8,9 +8,9 @@ export default function* setDataWorker(action) {
     yield put(todoSlice.actions.setLoading(true))
     yield delay(3000)
     yield put(todoSlice.actions.addItems(payload.target.text_input.value))
+
     yield put(todoSlice.actions.setLoading(false))
     const items = yield select(selectors.items)
     localStorage.setItem('items', JSON.stringify([...items, payload.target.text_input.value]))
-    console.log(payload)
-    console.log(items)
+    payload.target.text_input.value = ''
 }

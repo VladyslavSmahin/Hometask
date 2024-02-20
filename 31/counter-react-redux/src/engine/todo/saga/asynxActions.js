@@ -6,6 +6,6 @@ export const clearStoreAsyncAction = createAction('CLEAR_STORE_ASYNC')
 export const clearItemAsyncAction = createAction('CLEAR_ITEM', (item) => ({
     payload: item
 }));
-export const changeItemAsyncAction = createAction('CLEAR_ITEM', (item) => ({
+export const changeItemAsyncAction = createAction('CHANGE_ITEM', (item) => ({
     payload: item
 }));

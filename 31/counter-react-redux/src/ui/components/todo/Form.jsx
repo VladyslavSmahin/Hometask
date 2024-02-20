@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import selectors from "../../../engine/todo/selectors.js";
-import {setData} from "../../../engine/todo/thunks.js";
+import selectors from "../../../engine/todo/redux/selectors.js";
+import {setDataAsyncAction} from "../../../engine/todo/saga/asynxActions.js";
 
 
 function Form(props) {
@@ -9,7 +9,7 @@ function Form(props) {
     const loading = useSelector(selectors.loading)
     const items = useSelector(selectors.items)
     const onSubmit = (event) => {
-        dispatch(setData(event, items))
+        dispatch(setDataAsyncAction(event))
     }
     return (
         <form onSubmit={onSubmit}>

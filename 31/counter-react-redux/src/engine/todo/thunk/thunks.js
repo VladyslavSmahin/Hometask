@@ -1,4 +1,4 @@
-import todoSlice from "./todoSlice.js";
+import todoSlice from "../redux/todoSlice.js";
 
 const getData = () => {
     return (dispatch) => {
@@ -38,9 +38,10 @@ const setData = (event, items) => {
         localStorage.setItem('items', JSON.stringify(updatedItems));
     };
  }
+/*
 export {
     getData,
     setData,
     clearStore,
     clearItem
-}
+}*/

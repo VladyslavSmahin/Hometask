@@ -1,9 +1,9 @@
 import ListItem from "./ListItem.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "../counter/Button.jsx";
-import selectors from "../../../engine/todo/selectors.js";
+import selectors from "../../../engine/todo/redux/selectors.js";
 import {useEffect} from "react";
-import {getData, clearItem} from "../../../engine/todo/thunks.js";
+import {getDataAsyncAction} from "../../../engine/todo/saga/asynxActions.js";
 
 
 function List() {
@@ -11,10 +11,12 @@ function List() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getData())
+        dispatch(getDataAsyncAction())
     }, []);
 
-    const handleDelete = (item) => () => dispatch(clearItem(item, items))
+    const handleDelete = (item) => () => dispatch(
+    //
+    )
 
 
     return (

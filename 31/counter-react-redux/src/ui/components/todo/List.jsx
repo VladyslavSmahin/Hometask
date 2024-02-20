@@ -3,7 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import Button from "../counter/Button.jsx";
 import selectors from "../../../engine/todo/redux/selectors.js";
 import {useEffect} from "react";
-import {getDataAsyncAction} from "../../../engine/todo/saga/asynxActions.js";
+import {
+    changeItemAsyncAction,
+    clearItemAsyncAction,
+    getDataAsyncAction
+} from "../../../engine/todo/saga/asynxActions.js";
 
 
 function List() {
@@ -14,10 +18,8 @@ function List() {
         dispatch(getDataAsyncAction())
     }, []);
 
-    const handleDelete = (item) => () => dispatch(
-    //
-    )
-
+    const handleDelete = (item) => () => dispatch(clearItemAsyncAction(item))
+    const handleChange = (item) => () => dispatch(changeItemAsyncAction(item))
 
     return (
         <>
@@ -26,8 +28,12 @@ function List() {
                     ? <span>No data </span>
                     :
                     (
-                        items.map((item, index) => <ListItem key={index}>{item}
-                            <Button onClick={handleDelete(item)}>Delete</Button></ListItem>)
+                        items.map((item, index) =>
+
+                            <ListItem key={index}>
+                                <Button onClick={handleChange(item)}>Change</Button>
+                                {item}
+                                <Button onClick={handleDelete(item)}>Delete</Button></ListItem>)
                     )
             }
         </>

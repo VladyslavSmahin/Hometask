@@ -3,7 +3,7 @@ import Form from "./Form.jsx";
 import Footer from "./Footer.jsx";
 
 
-function TodoForm(){
+function TodoForm() {
 
     return (
         <div>
@@ -14,4 +14,5 @@ function TodoForm(){
         </div>
     );
 }
+
 export default TodoForm

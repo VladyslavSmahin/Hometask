@@ -1,12 +1,13 @@
 import '/style.css';
 
 
-function ListItem(props){
+function ListItem(props) {
     const {children} = props
     return (
-            <li className='liItem'>
-                {children}
-            </li>
+        <li className='liItem'>
+            {children}
+        </li>
     );
 }
+
 export default ListItem

@@ -17,12 +17,12 @@ const todoSlice = createSlice({
             state.loading = action.payload
         },
         updateItem: (state, action) => {
-            const { index, newValue } = action.payload;
+            const {index, newValue} = action.payload;
             if (index >= 0 && index < state.items.length) {
                 state.items[index] = newValue;
             }
         },
     }
 })
-export const {  updateItem } = todoSlice.actions;
+export const {updateItem} = todoSlice.actions;
 export default todoSlice;

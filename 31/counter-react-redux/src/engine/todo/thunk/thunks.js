@@ -14,7 +14,7 @@ const setData = (event, items) => {
         dispatch(todoSlice.actions.setLoading(true))
         event.preventDefault()
 
-        setTimeout(()=> {
+        setTimeout(() => {
             dispatch(todoSlice.actions.addItems(event.target.text_input.value))
             dispatch(todoSlice.actions.setLoading(false))
             event.target.text_input.value = ''
@@ -23,18 +23,18 @@ const setData = (event, items) => {
     }
 
 }
- const  clearStore = () => {
+const clearStore = () => {
     return (dispatch) => {
         {
             localStorage.removeItem('items');
             dispatch(todoSlice.actions.setItems([]))
         }
     }
- }
- const clearItem = (item, items) => {
+}
+const clearItem = (item, items) => {
     return (dispatch) => {
         const updatedItems = items.filter(i => i !== item)
         dispatch(todoSlice.actions.setItems(updatedItems));
         localStorage.setItem('items', JSON.stringify(updatedItems));
     };
- }
+}

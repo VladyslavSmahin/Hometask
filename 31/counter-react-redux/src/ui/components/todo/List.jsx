@@ -21,11 +21,11 @@ function List() {
 
     const handleDelete = (item) => () => dispatch(clearItemAsyncAction(item))
     const handleChange = (index) => (event) => {
-        setInputValues({ ...inputValues, [index]: event.target.value });
+        setInputValues({...inputValues, [index]: event.target.value});
     };
     const handleSubmit = (index) => () => {
         const updatedValue = inputValues[index];
-        dispatch(changeItemAsyncAction({ index, newValue: updatedValue }));
+        dispatch(changeItemAsyncAction({index, newValue: updatedValue}));
         setInputValues(prevState => ({
             ...prevState,
             [index]: ''

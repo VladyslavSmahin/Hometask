@@ -1,4 +1,4 @@
-import {configureStore } from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
 import counterSlice from "../engine/counter/counter.js";
 import todoSlice from "../engine/todo/redux/todoSlice.js";
 import sagaMiddleWare from "./middleware/saga.js";
@@ -12,7 +12,7 @@ export const store = configureStore({
     middleware: () => [
         //logger,
         //thunk,
-     sagaMiddleWare
+        sagaMiddleWare
     ]
 })
 sagaMiddleWare.run(rootSaga)

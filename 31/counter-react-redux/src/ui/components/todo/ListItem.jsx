@@ -1,9 +1,10 @@
+import '/style.css';
 
 
 function ListItem(props){
     const {children} = props
     return (
-            <li>
+            <li className='liItem'>
                 {children}
             </li>
     );

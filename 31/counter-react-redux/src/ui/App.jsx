@@ -8,8 +8,8 @@ function App() {
 
     return (
         <Provider store={store}>
-            <Wrapper/>
-            <Footer/>
+            {/*<Wrapper/>
+            <Footer/>*/}
             <Todo/>
         </Provider>
     )

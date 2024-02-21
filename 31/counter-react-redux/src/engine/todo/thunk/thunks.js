@@ -38,10 +38,3 @@ const setData = (event, items) => {
         localStorage.setItem('items', JSON.stringify(updatedItems));
     };
  }
-/*
-export {
-    getData,
-    setData,
-    clearStore,
-    clearItem
-}*/

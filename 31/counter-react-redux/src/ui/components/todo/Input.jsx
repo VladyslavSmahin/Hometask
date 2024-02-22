@@ -1,16 +1,18 @@
 import {TextField} from "@mui/material";
 
 function Input(props) {
-    const {onChange, value, sx} = props
+    const {handleChange, value, sx, placeholder,onBlur} = props
     return (
-        <TextField onChange={onChange}
+        <TextField onChange={handleChange}
+                   onBlur={onBlur}
                    value={value}
-                   id="filled-basic"
+                   sx={sx}
                    label="Filled"
                    variant="outlined"
-                   name='text_input'
                    type="text"
-                   sx={sx}/>
+                   name="todoText"
+                   placeholder={placeholder}
+                   />
     )
 
 }

@@ -21,6 +21,7 @@ const TodoForm = ({ addTodo }) => {
             }}
         >
             {formikProps => (
+
                 <Form>
                     <Field
                         type="text"
@@ -30,6 +31,7 @@ const TodoForm = ({ addTodo }) => {
                         onChange={formikProps.handleChange}
                         onBlur={formikProps.handleBlur}
                     />
+
                     {formikProps.errors.todoText && formikProps.touched.todoText && (
                         <div className="error-message">{formikProps.errors.todoText}</div>
                     )}

@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import selectors from "../../../engine/todo/redux/selectors.js";
 import {setDataAsyncAction} from "../../../engine/todo/saga/asynxActions.js";
-import TextField from "./Input.jsx";
+import Input from "./Input.jsx";
 import Button from "./Button.jsx";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -21,13 +21,15 @@ function Form(props) {
     });
     return (
         <>
-       {/* <form onSubmit={onSubmit}>
-            <TextField sx={{width: "100%"}}/>
+        {<form onSubmit={onSubmit}>
+            <Input sx={{width: "100%"}}
+                   name='text_input'
+            />
             <Button type="submit"
-                    disabled={loading}
+                    disabled={loading }
                     sx={{height: '20px',width: "100%"}}
             >{children}</Button>
-        </form>*/}
+        </form>}
             <Formik
                 initialValues={{ todoText: '' }}
                 validationSchema={validationSchema}
@@ -35,16 +37,17 @@ function Form(props) {
                 validateOnChange={true}
                 validateOnBlur={false}
             >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-                    <form onSubmit={handleSubmit}>
-                        <TextField
-                            onBlur={handleBlur}
-                            value={values.todoText}
+                {formikProps => (
+                    <form onSubmit={formikProps.handleSubmit}>
+                        <Input
+                            value={formikProps.values.todoText}
+                            onChange={formikProps.handleChange}
                             sx={{ width: "100%" }}
+                            name='text_input'
                         />
-                        {errors.todoText && touched.todoText && <div>{errors.todoText}</div>}
+                        {formikProps.errors.todoText && formikProps.touched.todoText && <div>{formikProps.errors.todoText}</div>}
                         <Button type="submit"
-                                disabled={loading}
+                                disabled={formikProps.isSubmitting}
                                 sx={{ height: '20px', width: "100%" }}>
                             {children}
                         </Button>

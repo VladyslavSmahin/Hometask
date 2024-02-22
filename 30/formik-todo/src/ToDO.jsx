@@ -42,3 +42,13 @@ const TodoForm = ({ addTodo }) => {
 };
 
 export default TodoForm;
+
+{/*<form onSubmit={onSubmit}>
+            <Input sx={{width: "100%"}}
+                   name='text_input'
+            />
+            <Button type="submit"
+                    disabled={loading }
+                    sx={{height: '20px',width: "100%"}}
+            >{children}</Button>
+        </form>*/}

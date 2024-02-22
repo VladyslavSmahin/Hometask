@@ -1,6 +1,5 @@
-import ListItem from "./ListItem.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import Button from "../counter/Button.jsx";
+import Button from "../todo/Button.jsx";
 import selectors from "../../../engine/todo/redux/selectors.js";
 import {useEffect, useState} from "react";
 import {
@@ -8,6 +7,9 @@ import {
     clearItemAsyncAction,
     getDataAsyncAction
 } from "../../../engine/todo/saga/asynxActions.js";
+import Input from "./Input.jsx";
+import {Box, IconButton, ListItem, ListItemText} from "@mui/material";
+import "/style.css";
 
 
 function List() {
@@ -40,18 +42,29 @@ function List() {
                     ? <span>No data </span>
                     :
                     (
-                        items.map((item, index) =>
+                        items.map((item, index) => (
+                            <ListItem key={index}
+                                      className='liItem'
+                                      sx={{
+                                          margin: "auto",
+                                          display: "flex",
+                                          justifyContent: "center",
+                                          alignItems: "center"
+                                      }}>
+                                <Button sx={{height: '55px', marginTop: '-6px' }}
+                                        onClick={handleSubmit(index)}>Change</Button>
+                                <Box sx={{display: 'flex', height: '60px'}}>
+                                    <Input sx={{width: '100px'}}
+                                           value={inputValues[index] || ''}
+                                           onChange={handleChange(index)}/>
+                                    <ListItemText primary={item}
+                                                  sx={{ border: '1px solid black',width: '300px', padding: '10px 20px 20px 20px', marginTop: '0' }}
+                                    />
+                                    <Button onClick={handleDelete(item)} sx={{height: '55px'}}>Delete</Button>
 
-                            <ListItem key={index}>
-                                <input
-                                    type="text"
-                                    name='text_input'
-                                    value={inputValues[index] || ''}
-                                    onChange={handleChange(index)}/>
-                                <Button onClick={handleSubmit(index)}>Change</Button>
-
-                                {item}
-                                <Button onClick={handleDelete(item)}>Delete</Button></ListItem>)
+                                </Box>
+                            </ListItem>
+                        ))
                     )
             }
         </>

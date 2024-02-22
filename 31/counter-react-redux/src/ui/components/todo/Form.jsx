@@ -1,6 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import selectors from "../../../engine/todo/redux/selectors.js";
 import {setDataAsyncAction} from "../../../engine/todo/saga/asynxActions.js";
+import TextField from "./Input.jsx";
+import Button from "./Button.jsx";
 
 
 function Form(props) {
@@ -13,8 +15,11 @@ function Form(props) {
     }
     return (
         <form onSubmit={onSubmit}>
-            <input type="text" name='text_input'/>
-            <button disabled={loading}>{children}</button>
+            <TextField sx={{width: "100%"}}/>
+            <Button type="submit"
+                    disabled={loading}
+                    sx={{height: '20px',width: "100%"}}
+            >{children}</Button>
         </form>
     );
 }

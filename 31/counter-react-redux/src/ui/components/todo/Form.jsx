@@ -9,10 +9,13 @@
     function Form(props) {
         const {children} = props
         const dispatch = useDispatch()
-        const loading = useSelector(selectors.loading)
-        const onSubmit = (event) => {
-            dispatch(setDataAsyncAction(event))
+        const loading = useSelector(selectors.loading);
+        const onSubmit = (event, formikProps) => {
+            event.preventDefault();
+            dispatch(setDataAsyncAction(formikProps.values));
+            console.log(formikProps.values)
         }
+
         const validationSchema = Yup.object().shape({
             todoText: Yup.string()
                 .min(5, 'Слишком короткое значение')
@@ -21,7 +24,7 @@
         });
         return (
             <>
-            {<form onSubmit={onSubmit}>
+           {/* <form onSubmit={onSubmit}>
                 <Input sx={{width: "100%"}}
                        name='text_input'
                 />
@@ -29,11 +32,15 @@
                         disabled={loading }
                         sx={{height: '20px',width: "100%"}}
                 >{children}</Button>
-            </form>}
+            </form>*/}
                 <Formik
-                    initialValues={{ todoText: '' }}
+                    initialValues={{
+                        todoText: '' }}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}
+                    onSubmit={(values, formikBag) => {
+                        console.log("Submitted values: ", values);
+                        dispatch(setDataAsyncAction(values));
+                    }}
                     validateOnChange={true}
                     validateOnBlur={false}
                 >
@@ -43,11 +50,11 @@
                                 type='todoText' name='todoText'
                                 value={formikProps.values.todoText}
                                 sx={{ width: "100%" }}
+                                onChange={formikProps.handleChange}
                             />
-                            {console.log(formikProps)}
                             {formikProps.errors.todoText && formikProps.touched.todoText && <div>{formikProps.errors.todoText}</div>}
                             <Button type="submit"
-                                    disabled={formikProps.isSubmitting}
+                                    disabled={loading}
                                     sx={{ height: '20px', width: "100%" }}>
                                 {children}
                             </Button>

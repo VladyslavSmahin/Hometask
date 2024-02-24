@@ -60,6 +60,7 @@ function List() {
                                     <ListItemText primary={item}
                                                   sx={{ border: '1px solid black',width: '300px', padding: '10px 20px 20px 20px', marginTop: '0' }}
                                     />
+                                    <Button  sx={{height: '55px'}}>Done</Button>
                                     <Button onClick={handleDelete(item)} sx={{height: '55px'}}>Delete</Button>
 
                                 </Box>

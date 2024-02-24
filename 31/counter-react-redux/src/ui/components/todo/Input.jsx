@@ -2,9 +2,10 @@
 
     function Input(props) {
         const { sx, name,value, onChange } = props
+
         const handleChange = (event) => {
             const newValue = event.target.value;
-            onChange(name, newValue);
+            onChange({ target: { name, value: newValue } });
         };
 
         return (

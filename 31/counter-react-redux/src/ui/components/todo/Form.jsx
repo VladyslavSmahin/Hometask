@@ -10,10 +10,9 @@
         const {children} = props
         const dispatch = useDispatch()
         const loading = useSelector(selectors.loading);
-        const onSubmit = (event, formikProps) => {
-            event.preventDefault();
-            dispatch(setDataAsyncAction(formikProps.values));
-            console.log(formikProps.values)
+        const onSubmit = (values, formikProps) => {
+            dispatch(setDataAsyncAction(values));
+            formikProps.resetForm()
         }
 
         const validationSchema = Yup.object().shape({
@@ -37,19 +36,17 @@
                     initialValues={{
                         todoText: '' }}
                     validationSchema={validationSchema}
-                    onSubmit={(values, formikBag) => {
-                        console.log("Submitted values: ", values);
-                        dispatch(setDataAsyncAction(values));
-                    }}
+                    onSubmit={onSubmit}
                     validateOnChange={true}
                     validateOnBlur={false}
                 >
                     {formikProps => (
                         <form onSubmit={formikProps.handleSubmit}>
                             <Input
-                                type='todoText' name='todoText'
-                                value={formikProps.values.todoText}
+                                type='text'
+                                name='todoText'
                                 sx={{ width: "100%" }}
+                                value={formikProps.values.todoText}
                                 onChange={formikProps.handleChange}
                             />
                             {formikProps.errors.todoText && formikProps.touched.todoText && <div>{formikProps.errors.todoText}</div>}

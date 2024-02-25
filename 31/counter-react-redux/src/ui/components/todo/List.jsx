@@ -1,39 +1,33 @@
 import {useDispatch, useSelector} from "react-redux";
 import Button from "../todo/Button.jsx";
 import selectors from "../../../engine/todo/redux/selectors.js";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {
-    changeItemAsyncAction,
+    toggleCheckboxAction,
     clearItemAsyncAction,
     getDataAsyncAction
 } from "../../../engine/todo/saga/asynxActions.js";
-import Input from "./Input.jsx";
-import {Box, ListItem, ListItemText} from "@mui/material";
+import {Box, Checkbox, ListItem, ListItemText} from "@mui/material";
 import "/style.css";
+import ThemeContext from "../theme.jsx";
 
 
 function List() {
     const items = useSelector(selectors.items);
     const dispatch = useDispatch();
-    const [inputValues, setInputValues] = useState({});
+    const theme = useContext(ThemeContext);
 
     useEffect(() => {
         dispatch(getDataAsyncAction())
     }, []);
 
     const handleDelete = (item) => () => dispatch(clearItemAsyncAction(item))
-    const handleChange = (index) => (event) => {
-        setInputValues({...inputValues, [index]: event.target.value});
-    };
-    const handleSubmit = (index) => () => {
-        const updatedValue = inputValues[index];
-        dispatch(changeItemAsyncAction({index, newValue: updatedValue}));
-        setInputValues(prevState => ({
-            ...prevState,
-            [index]: ''
-        }));
+
+    const handleCheckboxClick = (id) => () => {
+        dispatch(toggleCheckboxAction(id))
     };
 
+    console.log('items:', items);
 
     return (
         <>
@@ -50,17 +44,20 @@ function List() {
                                           display: "flex",
                                           justifyContent: "center",
                                           alignItems: "center"
-                                      }}>
-                                <Button sx={{height: '55px', marginTop: '-6px' }}
-                                        onClick={handleSubmit(index)}>Change</Button>
+                                      }}
+                            >
                                 <Box sx={{display: 'flex', height: '60px'}}>
-                                    <Input sx={{width: '100px'}}
-                                           value={inputValues[index] || ''}
-                                           onChange={handleChange(index)}/>
-                                    <ListItemText primary={item}
-                                                  sx={{ border: '1px solid black',width: '300px', padding: '10px 20px 20px 20px', marginTop: '0' }}
+                                    <Checkbox
+                                        edge="end"
+                                        checked={item.isChecked}
+                                        onClick={handleCheckboxClick(item.id)}
                                     />
-                                    <Button  sx={{height: '55px'}}>Done</Button>
+                                    <ListItemText primary={item.text}
+                                                  sx={{border: `1px solid ${theme.palette.primary.main}`,
+                                                      width: '300px',
+                                                      padding: '10px 20px 20px 20px',
+                                                      marginTop: '0' }}
+                                    />
                                     <Button onClick={handleDelete(item)} sx={{height: '55px'}}>Delete</Button>
 
                                 </Box>

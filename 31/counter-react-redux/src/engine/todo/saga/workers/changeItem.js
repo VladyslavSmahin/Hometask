@@ -1,3 +1,4 @@
+/*
 import {put, select} from 'redux-saga/effects';
 import {updateItem} from "../../redux/todoSlice";
 
@@ -10,5 +11,6 @@ export default function* changeItemWorker(action) {
     localStorage.setItem('items', JSON.stringify(updatedItems));
     yield;
 }
+*/
 
 

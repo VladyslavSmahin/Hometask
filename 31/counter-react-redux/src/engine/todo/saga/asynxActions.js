@@ -6,6 +6,4 @@ export const clearStoreAsyncAction = createAction('CLEAR_STORE_ASYNC')
 export const clearItemAsyncAction = createAction('CLEAR_ITEM', (item) => ({
     payload: item
 }));
-export const changeItemAsyncAction = createAction('CHANGE_ITEM', (item) => ({
-    payload: item
-}));
+export const toggleCheckboxAction = createAction('TOGGLE_CHECKBOX_ITEM');

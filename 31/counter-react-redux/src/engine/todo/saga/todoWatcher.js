@@ -9,8 +9,9 @@ import {
     setDataAsyncAction,
     clearStoreAsyncAction,
     clearItemAsyncAction,
-    toggleCheckboxAction
+    toggleCheckboxAction, filterItemsAsyncAction
 } from './asynxActions'
+import filterItemsWorker from "./workers/filterItems";
 
 
 export default function* todoWatcher() {
@@ -19,4 +20,5 @@ export default function* todoWatcher() {
     yield takeEvery(clearStoreAsyncAction.type, clearStoreWorker)
     yield takeEvery(clearItemAsyncAction.type, clearItemWorker)
     yield takeEvery(toggleCheckboxAction.type, toggleItemsWorker)
+    yield takeEvery(filterItemsAsyncAction.type, filterItemsWorker)
 }

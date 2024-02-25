@@ -27,8 +27,6 @@ function List() {
         dispatch(toggleCheckboxAction(id))
     };
 
-    console.log('items:', items);
-
     return (
         <>
             {

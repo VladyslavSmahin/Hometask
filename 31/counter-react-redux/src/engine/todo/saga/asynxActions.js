@@ -7,3 +7,5 @@ export const clearItemAsyncAction = createAction('CLEAR_ITEM', (item) => ({
     payload: item
 }));
 export const toggleCheckboxAction = createAction('TOGGLE_CHECKBOX_ITEM');
+export const filterItemsAsyncAction  = createAction
+('FILTER_ITEMS_ASYNC');

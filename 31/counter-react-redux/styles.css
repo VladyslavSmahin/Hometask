@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'YourFont';
+    src: url('public/fonts/QueensidesLight-ZVj3l.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.2;
+    font-size: 18px;
+    font-family: 'YourFont', sans-serif;
+}
+.logo{
+    line-height: 2;
+    font-size: 30px;
+}
+.greeting{
+    font-family: 'YourFont', sans-serif;
+    line-height: 2;
+    font-size: 30px;
+}
+.greeting1 {
+    animation: slideInFromLeft 1s ease-in-out forwards;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+.greeting2 {
+    animation: slideInFromLeft 1s ease-in-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+.greeting3 {
+    animation: slideInFromLeft 1s ease-in-out forwards ;
+    animation-delay: 2s;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.section1 {
+    display: flex;
+    justify-content: center;
+    padding: 0 150px 150px;
+    font-family: 'YourFont', sans-serif;
+    line-height: 1.2;
+    font-size: 18px;
+}
+.leftCol{
+    padding-right: 20px;
+}
+.headers {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.borders {
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+.skills{
+    columns: 2;
+    -webkit-columns: 2;
+}
+.zoom-container {
+    overflow: hidden; /* Скрытие области, выходящей за пределы контейнера */
+}
+
+.zoomable-image {
+    transition: transform 0.5s ease-in-out;
+}
+
+.zoomable-image:hover {
+    transform: scale(1.5);
+}

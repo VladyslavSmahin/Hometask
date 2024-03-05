@@ -1,9 +1,17 @@
 import Button from '@mui/material/Button';
+import ThemeContext from "../helpers/theme.jsx";
+import {useContext} from "react";
 
 export default function (props){
     const  {onClick, children,disabled, sx, type } = props
+    const Theme = useContext(ThemeContext)
     return(
-        <Button  type={type} sx={sx} variant="contained" disabled={disabled} onClick={onClick}>{children}</Button>
+        <Button type={type}
+                sx={{...sx, backgroundColor: `${Theme.palette.primary.buttonBackGr}`, color: `${Theme.palette.primary.textButton}`}}
+                variant="contained"
+                disabled={disabled}
+                onClick={onClick}
+        >{children}</Button>
     )
 
 }

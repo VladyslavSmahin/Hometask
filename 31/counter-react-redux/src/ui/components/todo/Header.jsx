@@ -1,18 +1,31 @@
-import {Box, Container, Typography} from "@mui/material";
+import {Box, Container} from "@mui/material";
 import Button from "./Button.jsx";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import { Dropdown } from '@mui/base/Dropdown';
+import {useState} from "react";
 
-function Header(props) {
-    const {} = props
+function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOpen = () => {
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        setIsOpen(false);
+    };
     return (
         <Container sx={{display: 'flex', justifyContent: 'space-between'}}>
-            <Typography variant="h2">Todo</Typography>
-            <Box sx={{marginTop: '10px'}}>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Button>Todo</Button>
+            <p className="logo">Vladyslav Smahin</p>
+            <Box sx={{marginTop: '10px', marginBottom: '20px'}}>
+                <Link to="/" title='Home' style={{textDecoration: 'none'}}>
+                    <Button sx={{marginRight: '10px'}}>Home</Button>
                 </Link>
-                <Link to="/counter" style={{ textDecoration: 'none' }}>
-                    <Button sx={{marginLeft: '10px'}}>Counter</Button>
+                <Link to="/CV" title='CV' style={{textDecoration: 'none'}}>
+                    <Button sx={{marginRight: '10px'}}>CV</Button>
+                </Link>
+                <Link to="/Projects" title='Projects' style={{textDecoration: 'none'}}>
+                    <Button sx={{marginRight: '10px'}}>Projects</Button>
                 </Link>
             </Box>
         </Container>

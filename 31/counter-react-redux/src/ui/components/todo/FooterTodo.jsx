@@ -4,11 +4,8 @@ import {useSelector, useDispatch} from "react-redux";
 import {clearStoreAsyncAction, filterItemsAsyncAction} from "../../../engine/todo/saga/asynxActions.js";
 import {Box, TextField, Typography} from "@mui/material";
 import Input from "./Input.jsx";
-import todoSlice from "../../../engine/todo/redux/todoSlice.js";
-import {useEffect} from "react";
-import {Form} from "formik";
 
-function Footer() {
+function FooterTodo() {
     const items = useSelector(selectors.items);
     const dispatch = useDispatch()
     const onClear = () => {
@@ -26,10 +23,10 @@ function Footer() {
             <Typography sx={{border: '1px solid black', padding: "10px"}}
                         variant="h5">Count: {items.length}</Typography>
             <Button onClick={onClear} sx={{marginRight: '6px'}}>Clear</Button>
-            <Input  sx={{width: "50%"}} onChange={handleFilter}></Input>
+            <Input  sx={{width: "50%"}} onChange={handleFilter} label='Filter'></Input>
 
         </Box>
     );
 }
 
-export default Footer
+export default FooterTodo

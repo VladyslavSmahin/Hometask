@@ -23,15 +23,6 @@
         });
         return (
             <>
-           {/* <form onSubmit={onSubmit}>
-                <Input sx={{width: "100%"}}
-                       name='text_input'
-                />
-                <Button type="submit"
-                        disabled={loading }
-                        sx={{height: '20px',width: "100%"}}
-                >{children}</Button>
-            </form>*/}
                 <Formik
                     initialValues={{
                         todoText: '' }}
@@ -48,6 +39,7 @@
                                 sx={{ width: "100%" }}
                                 value={formikProps.values.todoText}
                                 onChange={formikProps.handleChange}
+                                label='Your  text'
                             />
                             {formikProps.errors.todoText && formikProps.touched.todoText && <div>{formikProps.errors.todoText}</div>}
                             <Button type="submit"

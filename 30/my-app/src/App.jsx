@@ -20,7 +20,7 @@ function LogInForm(props) {
             <Field
                 name='password'
                 component={Input}
-                label='Password'
+                label='LoginPassword'
                 type='password'
                 placeholder='yourPassword'
             />

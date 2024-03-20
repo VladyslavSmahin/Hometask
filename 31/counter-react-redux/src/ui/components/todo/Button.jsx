@@ -7,7 +7,7 @@ export default function (props){
     const Theme = useContext(ThemeContext)
     return(
         <Button type={type}
-                sx={{...sx, backgroundColor: `${Theme.palette.primary.buttonBackGr}`, color: `${Theme.palette.primary.textButton}`}}
+                sx={{...sx, marginRight: '10px', backgroundColor: `${Theme.palette.primary.buttonBackGr}`, color: `${Theme.palette.primary.textButton}`}}
                 variant="contained"
                 disabled={disabled}
                 onClick={onClick}
